@@ -17,6 +17,7 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { ReactNode } from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import { MdAttachEmail } from "react-icons/md";
 
 const Header = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -136,7 +137,7 @@ const Footer = () => {
   return (
     <Flex
       w="full"
-      bg='#4b3f43'
+      bg="#4b3f43"
       p={15}
       alignItems="center"
       justifyContent="center"
@@ -178,6 +179,18 @@ const Footer = () => {
 
         <Flex mx="-2" display="flex" alignItems="center">
           <chakra.a
+            href="mailto:oogale@uwaterloo.ca"
+            mx="2"
+            color="gray.600"
+            _hover={{
+              color: "gray.500",
+            }}
+            aria-label="Email"
+          >
+            <MdAttachEmail size={"25"} />
+          </chakra.a>
+
+          <chakra.a
             href="https://ca.linkedin.com/in/om-ogale"
             mx="2"
             color="gray.600"
@@ -186,7 +199,7 @@ const Footer = () => {
             }}
             aria-label="LinkedIn"
           >
-            <FaLinkedin size={"25"}/>
+            <FaLinkedin size={"25"} />
           </chakra.a>
 
           <chakra.a
@@ -198,7 +211,7 @@ const Footer = () => {
             }}
             aria-label="Github"
           >
-            <FaGithub size={"25"}/>
+            <FaGithub size={"25"} />
           </chakra.a>
         </Flex>
       </Flex>
