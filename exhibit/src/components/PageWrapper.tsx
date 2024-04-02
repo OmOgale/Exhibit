@@ -60,7 +60,12 @@ const Header = () => {
               }}
             >
               <Link as={NextLink} href="/blog">
-                <Button variant="ghost">Blog</Button>
+                <Button
+                  variant="ghost"
+                  _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
+                >
+                  Blog
+                </Button>
               </Link>
             </HStack>
             <Box
@@ -102,9 +107,15 @@ const Header = () => {
                   aria-label="Close menu"
                   onClick={mobileNav.onClose}
                 />
-                <Button w="full" variant="ghost">
-                  Blog
-                </Button>
+                <Link as={NextLink} href="/blog">
+                  <Button
+                    w="full"
+                    variant="ghost"
+                    _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
+                  >
+                    Blog
+                  </Button>
+                </Link>
               </VStack>
             </Box>
           </HStack>

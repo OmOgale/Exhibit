@@ -21,7 +21,7 @@ export default function ToBeAdded() {
   return (
     <>
         <Hero bg={color}>
-            <VStack>
+            <VStack alignItems="center" justifyContent="center" width="full">
                 <Box fontSize="7xl" fontWeight="bold" mb={4}>
                     <Text>TBA</Text>
                 </Box>
