@@ -22,7 +22,7 @@ import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 
 const Header = () => {
-  const bg = useColorModeValue("white", "gray.800");
+  const bg = "white"
   const mobileNav = useDisclosure();
   return (
     <>
@@ -62,6 +62,7 @@ const Header = () => {
               <Link as={NextLink} href="/blog">
                 <Button
                   variant="ghost"
+                  color="black"
                   _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
                 >
                   Blog
@@ -111,6 +112,7 @@ const Header = () => {
                   <Button
                     w="full"
                     variant="ghost"
+                    color="black"
                     _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
                   >
                     Blog
