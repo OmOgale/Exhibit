@@ -10,7 +10,7 @@ const Introduction = () => {
           textAlign="center"
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize="8xl"
+          fontSize={{ base: "8xl", sm: "5xl"}}
           display="block"
         >
           Om Ogale
@@ -20,7 +20,7 @@ const Introduction = () => {
           textAlign="center"
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize="6xl"
+          fontSize={{ base: "6xl", sm: "3xl"}}
           display="block"
           mt="30"
         >
