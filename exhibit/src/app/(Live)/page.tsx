@@ -1,13 +1,13 @@
-'use client'
+"use client";
 import { Hero } from "@/components/Hero";
-import { useState, useEffect } from "react";
+import Resume from "@/components/Resume";
 
-export default function Page() {
-
+export default function Live() {
   return (
     <>
-      <Hero bg={'#4b3f43'}>
+      <Hero bg={"#4b3f43"}>
+        <Resume />
       </Hero>
     </>
   );
-};
+}

@@ -11,7 +11,7 @@ import {
   useColorModeValue,
   useDisclosure,
   CloseButton,
-  Icon,
+  Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { ReactNode } from "react";
@@ -36,19 +36,18 @@ const Header = () => {
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
-            <chakra.a
-              href="/"
-              title="Choc Home Page"
-              display="flex"
-              alignItems="center"
-            >
-              <VisuallyHidden>Choc</VisuallyHidden>
-            </chakra.a>
-            <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-              Choc
-            </chakra.h1>
+            <Box ml="2">
+              <Image
+                src="/om_photo.jpg"
+                alt="Logo"
+                boxSize="40px"
+                width="50px"
+                borderRadius="full"
+                border="2px solid #4b3f43"
+              />
+            </Box>
           </Flex>
-          <HStack display="flex" alignItems="center" spacing={1}>
+          <HStack display="flex-end" alignItems="center" spacing={1}>
             <HStack
               spacing={1}
               mr={1}
@@ -58,15 +57,8 @@ const Header = () => {
                 md: "inline-flex",
               }}
             >
-              <Button variant="ghost">Features</Button>
-              <Button variant="ghost">Pricing</Button>
               <Button variant="ghost">Blog</Button>
-              <Button variant="ghost">Company</Button>
-              <Button variant="ghost">Sign in</Button>
             </HStack>
-            <Button colorScheme="brand" size="sm">
-              Get Started
-            </Button>
             <Box
               display={{
                 base: "inline-flex",
@@ -106,21 +98,8 @@ const Header = () => {
                   aria-label="Close menu"
                   onClick={mobileNav.onClose}
                 />
-
-                <Button w="full" variant="ghost">
-                  Features
-                </Button>
-                <Button w="full" variant="ghost">
-                  Pricing
-                </Button>
                 <Button w="full" variant="ghost">
                   Blog
-                </Button>
-                <Button w="full" variant="ghost">
-                  Company
-                </Button>
-                <Button w="full" variant="ghost">
-                  Sign in
                 </Button>
               </VStack>
             </Box>
@@ -155,18 +134,6 @@ const Footer = () => {
         py="4"
         bg="white"
       >
-        <chakra.a
-          href="#"
-          fontSize="xl"
-          fontWeight="bold"
-          color="gray.600"
-          _hover={{
-            color: "gray.700",
-          }}
-        >
-          Brand
-        </chakra.a>
-
         <chakra.p
           py={{
             base: "2",
