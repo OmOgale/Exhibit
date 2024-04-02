@@ -2,6 +2,7 @@
 import { Providers } from '../providers'
 import { fonts } from '../fonts'
 import PageWrapper from '@/components/PageWrapper'
+import { Metadata } from 'next'
 
 export default function RootLayout({
   children,
@@ -19,4 +20,9 @@ export default function RootLayout({
       </body>
     </html>
   )
+}
+
+export const metadata: Metadata = {
+  title: "Om's Exhibit",
+  description: "This is Om's personal portfolio website."
 }
