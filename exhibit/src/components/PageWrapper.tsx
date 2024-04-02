@@ -12,7 +12,9 @@ import {
   useDisclosure,
   CloseButton,
   Image,
+  Link,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { ReactNode } from "react";
 import { FaLinkedin } from "react-icons/fa6";
@@ -57,7 +59,9 @@ const Header = () => {
                 md: "inline-flex",
               }}
             >
-              <Button variant="ghost">Blog</Button>
+              <Link as={NextLink} href="/blog">
+                <Button variant="ghost">Blog</Button>
+              </Link>
             </HStack>
             <Box
               display={{
