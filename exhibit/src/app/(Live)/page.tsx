@@ -11,7 +11,6 @@ export default function Live() {
     <>
       <Hero bg={"exhibit.200"}>
         <Introduction />
-
       </Hero>
     </>
   );
