@@ -71,8 +71,7 @@ const Carousel = () => {
   return (
     <Flex
       w="full"
-      bg="#edf3f8"
-      _dark={{ bg: "#3e3e3e" }}
+      bg="exhibit.300"
       alignItems="center"
       justifyContent="center"
     >

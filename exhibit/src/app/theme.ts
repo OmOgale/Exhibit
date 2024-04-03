@@ -1,5 +1,5 @@
 /* theme.ts */
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, withDefaultColorScheme, theme as baseTheme } from "@chakra-ui/react";
 
 export const customTheme = extendTheme({
     fonts: {
@@ -8,4 +8,13 @@ export const customTheme = extendTheme({
     },
     initialColorMode: 'dark',
     useSystemColorMode: false,
-});
+    colors: {
+      exhibit: {
+        100: baseTheme.colors.white,
+        200: "#4b3f43",
+        300: "#d98aa2",
+      }
+    }
+},
+  withDefaultColorScheme({ colorScheme: 'exhibit' })
+)

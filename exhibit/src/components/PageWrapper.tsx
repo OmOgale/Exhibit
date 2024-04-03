@@ -63,7 +63,7 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   color="black"
-                  _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
+                  _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
                 >
                   Blog
                 </Button>
@@ -113,7 +113,7 @@ const Header = () => {
                     w="full"
                     variant="ghost"
                     color="black"
-                    _hover={{ backgroundColor: "#d98aa2", opacity: 0.8 }}
+                    _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
                   >
                     Blog
                   </Button>

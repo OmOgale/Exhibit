@@ -4,25 +4,25 @@ import { TypeAnimation } from 'react-type-animation';
 
 const Introduction = () => {
   return (
-    <Flex w="full" justifyContent="center">
+    <Flex ml="10">
       <Stack>
         <Text
-          textAlign="center"
+          textAlign="left"
           fontWeight="bold"
           letterSpacing="tight"
           fontSize="8xl"
-          display="block"
+          whiteSpace="pre-line"
+          display="inline-block"
         >
           Om Ogale
         </Text>
         <Text
-          color="#d98aa2"
+          color="exhibit.300"
           textAlign="center"
           fontWeight="bold"
           letterSpacing="tight"
           fontSize="6xl"
           display="block"
-          mt="30"
         >
             <TypeAnimation
                 sequence={[

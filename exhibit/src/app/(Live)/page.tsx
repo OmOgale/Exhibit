@@ -9,7 +9,7 @@ import Resume from "@/components/Resume";
 export default function Live() {
   return (
     <>
-      <Hero bg={"#4b3f43"}>
+      <Hero bg={"exhibit.200"}>
         <Introduction />
 
       </Hero>

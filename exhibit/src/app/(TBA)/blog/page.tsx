@@ -5,7 +5,7 @@ import { Box, Link, VStack, Text } from '@chakra-ui/react';
 
 export default function ToBeAdded() {
 
-    const [color, setColor] = useState('#4b3f43'); // Initial color
+    const [color, setColor] = useState("exhibit.200"); // Initial color
 
     useEffect(() => {
       const interval = setInterval(() => {
