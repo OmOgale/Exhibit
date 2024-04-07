@@ -3,11 +3,13 @@ import { Flex, Box, chakra, Stack, Link, Text } from "@chakra-ui/react";
 import { TypeAnimation } from "react-type-animation";
 import { Overview } from "@/components/Overview";
 import Milestone from "@/components/Timeline";
+import Carousel from "./Carousel";
+import { TbBuildingCarousel } from "react-icons/tb";
 
 const Introduction = () => {
   return (
     <>
-      <Stack ml={{ base: 5, md: 100, "2xl": 300 }} mt={100} display="flex">
+      <Stack ml={{ base: 4, md: 100, "2xl": 300 }} mt={100} display="flex">
         <Text
           fontWeight="bold"
           letterSpacing="tight"
@@ -23,15 +25,33 @@ const Introduction = () => {
           color="exhibit.300"
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize={{ base: "2xl", md: " 5xl" }}
-          display="block"
+          fontSize={{ base: "4xl", sm: " 5xl" }}
           align="left"
           mt="2"
           height={150}
           flexShrink={0}
+          whiteSpace={"pre-line"}
+          display={{md: "none"}}
         >
           <TypeAnimation
-            sequence={["Aspiring to Learn Everyday!"]}
+            sequence={[`Aspiring to \n Learn Everyday!`]}
+            wrapper="span"
+          />
+        </Text>
+        <Text
+          color="exhibit.300"
+          fontWeight="bold"
+          letterSpacing="tight"
+          fontSize={" 5xl"}
+          align="left"
+          mt="2"
+          height={150}
+          flexShrink={0}
+          whiteSpace={"pre-line"}
+          display={{ base: "none", md: "unset"}}
+        >
+          <TypeAnimation
+            sequence={[`Aspiring to Learn Everyday!`]}
             wrapper="span"
           />
         </Text>

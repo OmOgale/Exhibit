@@ -70,10 +70,11 @@ const Carousel = () => {
 
   return (
     <Flex
-      w="full"
+      w="6xl"
       bg="exhibit.300"
       alignItems="center"
       justifyContent="center"
+      mt={50}
     >
       <Flex w="full" pos="relative" overflow="hidden">
         <Flex h="400px" w="full" {...carouselStyle}>

@@ -17,7 +17,7 @@ const Feature = (props) => {
           w={12}
           rounded="md"
           color="exhibit.200"
-          display={{ sm: "none", md: "unset" }}
+          display={{ base: "none", md: "unset" }}
         >
           <Icon
             boxSize={6}
@@ -28,7 +28,7 @@ const Feature = (props) => {
           />
         </Flex>
       </Flex>
-      <Box ml={{ sm: 8, md: 4 }} mr={12} mb={8}>
+      <Box ml={{ sm: 8, md: 4 }} mb={8}>
         <chakra.dt
           fontSize="lg"
           fontWeight="medium"
@@ -49,12 +49,12 @@ export const Overview = () => {
   return (
     <Flex
       bg="exhibit.300"
-      p={20}
+      p={10}
       justifyContent="center"
       alignItems="center"
       borderRadius={50}
       mr={100}
-      ml={{ base: -4, sm: 0 }}
+      w={{ base: "90vw", md: "unset" }}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
@@ -64,7 +64,6 @@ export const Overview = () => {
             base: 4,
             lg: 8,
           }}
-          w={{ base: 200, md: "auto" }}
         >
           <Box
             textAlign={{
@@ -124,13 +123,13 @@ export const Overview = () => {
               <Feature title="Work Experiences" icon={TbWorldHeart}>
                 I have had extensive hands-on experience 📈 with full-stack web
                 development as well as embedded hardware systems and testing
-                through my past experiences. Spearheaded my team at hackathons
-                such as HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @
-                McGill! I have also held leadership positions in debating. 🎤
+                through my past experiences. Lead my team at hackathons such as
+                HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! I have
+                also held leadership positions in debating. 🎤
               </Feature>
 
               <Feature title="Projects" icon={FaRegFileCode}>
-                Focused on creating only projects with real-world usecases ❤️.
+                Focused on spearheading projects with real-world usecases ❤️.
                 Have developed projects in multiple stacks including full-stack
                 development with the MERN stack as well as alternate frameworks
                 such as Flask. I also have fun in designing optimized pure C++

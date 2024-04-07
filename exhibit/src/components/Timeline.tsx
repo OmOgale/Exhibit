@@ -10,13 +10,14 @@ import {
   VStack,
   Flex,
   Icon,
+  Button,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { FaRegNewspaper } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import { IconType } from "react-icons";
-import { BsSuitcaseLg } from "react-icons/bs";
+import { BsSuitcaseLgFill } from "react-icons/bs";
 import { SiFord } from "react-icons/si";
 
 const milestones = [
@@ -62,8 +63,23 @@ const milestones = [
           Bridge (adb).
         </li>
         <li>
-          Received excellent reviews from both my supervisor, Rahul Trivedi, and
-          department head, Yaron Spanglet.
+          Received outstanding reviews from both my supervisor,{" "}
+          <Link
+            textDecoration="underline"
+            target="_blank"
+            href="https://ca.linkedin.com/in/rahul-trivedi-1091035"
+          >
+            Rahul Trivedi
+          </Link>
+          , and department head,{" "}
+          <Link
+            textDecoration="underline"
+            target="_blank"
+            href="https://ca.linkedin.com/in/yaron-spanglet-989b715"
+          >
+            Yaron Spanglet
+          </Link>
+          .
         </li>
       </ul>
     ),
@@ -82,16 +98,18 @@ const Milestones = () => {
       mr={20}
       textAlign="left"
     >
-      <Text
+      <Button
         fontSize="4xl"
         w="full"
         fontWeight="extrabold"
         mb={18}
         ml={115}
         color="exhibit.300"
+        justifyContent="left"
+        leftIcon={<BsSuitcaseLgFill size={40} />}
       >
-        Work Experiences
-      </Text>
+        &nbsp; Work Experiences
+      </Button>
       {milestones.map((milestone, index) => (
         <Flex key={index} mb="10px">
           <LineWithDot />
@@ -122,6 +140,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
       pos="relative"
       borderTop="8px"
       borderColor="exhibit.300"
+      w={{ xs: "80", md: "unset" }}
     >
       <Icon as={icon} fontSize={60} color="exhibit.200" />
       <Box>
