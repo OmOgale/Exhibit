@@ -15,9 +15,20 @@ const Introduction = () => {
           letterSpacing="tight"
           fontSize={{ base: "7xl", md: "9xl" }}
           whiteSpace="pre-line"
-          display="inline-block"
           align="left"
           lineHeight="1"
+          display={{md: "none"}}
+        >
+          Om {"\n"} Ogale
+        </Text>
+        <Text
+          fontWeight="bold"
+          letterSpacing="tight"
+          fontSize={{ base: "7xl", md: "9xl" }}
+          whiteSpace="pre-line"
+          align="left"
+          lineHeight="1"
+          display={{base: "none", md: "unset"}}
         >
           Om Ogale
         </Text>

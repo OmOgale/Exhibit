@@ -90,26 +90,19 @@ const milestones = [
 
 const Milestones = () => {
   return (
-    <VStack
-      maxWidth="5xl"
-      w={{ base: "auto" }}
-      gap={0}
-      mt={50}
-      mr={20}
-      textAlign="left"
-    >
-      <Button
+    <VStack maxWidth="6xl" w={{base: "75%", md: "unset"}} gap={0} mt={50} mr={20} textAlign="left">
+      <Text
         fontSize="4xl"
-        w="full"
+        as={Button}
         fontWeight="extrabold"
-        mb={18}
-        ml={115}
+        whiteSpace={"pre-line"}
         color="exhibit.300"
         justifyContent="left"
+        alignItems={"top"}
         leftIcon={<BsSuitcaseLgFill size={40} />}
       >
-        &nbsp; Work Experiences
-      </Button>
+        &nbsp; Experiences
+      </Text>
       {milestones.map((milestone, index) => (
         <Flex key={index} mb="10px">
           <LineWithDot />
@@ -140,9 +133,13 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
       pos="relative"
       borderTop="8px"
       borderColor="exhibit.300"
-      w={{ xs: "80", md: "unset" }}
     >
-      <Icon as={icon} fontSize={60} color="exhibit.200" />
+      <Icon
+        as={icon}
+        display={{ base: "none", sm: "unset" }}
+        fontSize={60}
+        color="exhibit.200"
+      />
       <Box>
         <VStack spacing={2} mb={3} textAlign="left" color={"black"}>
           <Text
@@ -166,7 +163,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             <em>{location}</em>
           </Text>
-          <Text as={"div"} fontSize="md" w="100%" textAlign="left" ml="10">
+          <Text as={"div"} fontSize="md" w="95%" textAlign="left" ml="10">
             {description}
           </Text>
         </VStack>
