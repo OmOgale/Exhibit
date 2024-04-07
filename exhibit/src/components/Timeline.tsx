@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode } from "react";
 import {
   Box,
@@ -49,15 +50,15 @@ const milestones = [
     description: (
       <ul text-align="left">
         <li>
-          Setup the First installation of Ford&lsquo;s latest in-development
+          Setup the First installation of Ford's latest in-development
           infotainment system in the Performance Lab.
         </li>
         <li>
           Developing key KPIs for identifying performance bottlenecks utilizing
-          OOPs, internal APIs and the Slash framework in Python within an Agile ecosystem.
+          OOPs, internal APIs and Slash in Python within an Agile framework.
         </li>
         <li>
-          In-depth involvement with the OS by working on QNX, Linux and Android Debug
+          In-depth involvement with the OS by working on QNX and Android Debug
           Bridge (adb).
         </li>
       </ul>
@@ -71,7 +72,7 @@ const Milestones = () => {
   return (
     <VStack
       maxWidth="5xl"
-      w={{ base: 80, md: "auto" }}
+      w={{ base: "auto" }}
       gap={0}
       mt={50}
       mr={20}
@@ -142,7 +143,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             <em>{location}</em>
           </Text>
-          <Text fontSize="md" w="100%" textAlign="left" ml="10">
+          <Text as={"div"} fontSize="md" w="100%" textAlign="left" ml="10">
             {description}
           </Text>
         </VStack>
