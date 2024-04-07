@@ -1,38 +1,38 @@
 "use client";
 import { Flex, Box, chakra, Stack, Link, Text } from "@chakra-ui/react";
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from "react-type-animation";
 
 const Introduction = () => {
   return (
-    <Flex ml="10">
-      <Stack>
-        <Text
-          textAlign="left"
-          fontWeight="bold"
-          letterSpacing="tight"
-          fontSize="8xl"
-          whiteSpace="pre-line"
-          display="inline-block"
-        >
-          Om Ogale
-        </Text>
+    <Stack ml={{ base: 100, lg: 400 }} mt={100}>
+      <Text
+        fontWeight="bold"
+        letterSpacing="tight"
+        fontSize="9xl"
+        whiteSpace="pre-line"
+        display="inline-block"
+        align="left"
+        lineHeight="1"
+      >
+        Om Ogale
+      </Text>
+      <Flex justifyContent="center" width="full">
         <Text
           color="exhibit.300"
-          textAlign="center"
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize="6xl"
+          fontSize="5xl"
           display="block"
+          align="left"
+          mt="2"
         >
-            <TypeAnimation
-                sequence={[
-                    "Aspiring to Learn Everyday!",
-                ]}
-                wrapper="span"
-            />
+          <TypeAnimation
+            sequence={["Aspiring to Learn Everyday!"]}
+            wrapper="span"
+          />
         </Text>
-      </Stack>
-    </Flex>
+      </Flex>
+    </Stack>
   );
 };
 
