@@ -10,7 +10,6 @@ import {
   VStack,
   Flex,
   Icon,
-  Button,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
@@ -90,8 +89,14 @@ const milestones = [
 
 const Milestones = () => {
   return (
-    <VStack maxWidth="6xl" w={{base: "75%", md: "unset"}} gap={0} mt={50} mr={20} textAlign="left">
-      <Text
+    <VStack
+      maxWidth="6xl"
+      w={{ base: "75%", xl: "unset" }}
+      gap={0}
+      mt={50}
+      textAlign="left"
+    >
+      {/* <Text
         fontSize="4xl"
         as={Button}
         fontWeight="extrabold"
@@ -103,7 +108,13 @@ const Milestones = () => {
         leftIcon={<BsSuitcaseLgFill size={40} />}
       >
         &nbsp; Experiences
-      </Text>
+      </Text> */}
+      <HStack>
+        <Icon color="exhibit.300" as={BsSuitcaseLgFill} fontSize={35}/>
+        <br />
+        <Text color="exhibit.300" fontWeight="extrabold" fontSize="4xl">Experiences</Text>
+      </HStack>
+
       {milestones.map((milestone, index) => (
         <Flex key={index} mb="10px">
           <LineWithDot />
