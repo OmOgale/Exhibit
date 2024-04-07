@@ -20,9 +20,11 @@ import { ReactNode } from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
+import { RiArticleLine } from "react-icons/ri";
+import { FaRegFileCode } from "react-icons/fa6";
 
 const Header = () => {
-  const bg = "white"
+  const bg = "white";
   const mobileNav = useDisclosure();
   return (
     <>
@@ -64,8 +66,21 @@ const Header = () => {
                   variant="ghost"
                   color="black"
                   _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                  aria-label="blog"
+                  leftIcon={<RiArticleLine />}
                 >
                   Blog
+                </Button>
+              </Link>
+              <Link as={NextLink} href="/projects">
+                <Button
+                  variant="ghost"
+                  color="black"
+                  _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                  aria-label="projects"
+                  leftIcon={<FaRegFileCode />}
+                >
+                  Projects
                 </Button>
               </Link>
             </HStack>
@@ -114,8 +129,22 @@ const Header = () => {
                     variant="ghost"
                     color="black"
                     _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                    aria-label="blog"
+                    leftIcon={<RiArticleLine />}
                   >
                     Blog
+                  </Button>
+                </Link>
+                <Link as={NextLink} href="/projects">
+                  <Button
+                    w="full"
+                    variant="ghost"
+                    color="black"
+                    _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                    aria-label="projects"
+                    leftIcon={<FaRegFileCode />}
+                  >
+                    Projects
                   </Button>
                 </Link>
               </VStack>
