@@ -3,6 +3,7 @@ import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { FaRegFileCode } from "react-icons/fa6";
+import useScrollToElement from "@/hooks/useScrollToElement";
 
 // @ts-ignore
 const Feature = (props) => {

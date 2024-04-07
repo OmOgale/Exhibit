@@ -27,7 +27,7 @@ const milestones = [
     description: (
       <ul text-align="left">
         <li>
-          Setup the First installation of Ford's latest in-development
+          Setup the First installation of Ford&lsquo;s latest in-development
           infotainment system in the Performance Lab.
         </li>
         <li>
@@ -50,7 +50,7 @@ const milestones = [
     description: (
       <ul text-align="left">
         <li>
-          Setup the First installation of Ford's latest in-development
+          Setup the First installation of Ford&lsquo;s latest in-development
           infotainment system in the Performance Lab.
         </li>
         <li>
@@ -60,6 +60,10 @@ const milestones = [
         <li>
           In-depth involvement with the OS by working on QNX and Android Debug
           Bridge (adb).
+        </li>
+        <li>
+          Received excellent reviews from both my supervisor, Rahul Trivedi, and
+          department head, Yaron Spanglet.
         </li>
       </ul>
     ),
