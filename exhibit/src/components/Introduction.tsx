@@ -1,16 +1,17 @@
 "use client";
 import { Flex, Box, chakra, Stack, Link, Text } from "@chakra-ui/react";
 import { TypeAnimation } from "react-type-animation";
-import { Overview } from "./Overview";
+import { Overview } from "@/components/Overview";
+import Milestone from "@/components/Timeline";
 
 const Introduction = () => {
   return (
     <>
-      <Stack ml={{ base: 100, "2xl": 300 }} mt={100} display="flex">
+      <Stack ml={{ base: 5, md: 100, "2xl": 300 }} mt={100} display="flex">
         <Text
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize="9xl"
+          fontSize={{ base: "7xl", md: "9xl" }}
           whiteSpace="pre-line"
           display="inline-block"
           align="left"
@@ -22,7 +23,7 @@ const Introduction = () => {
           color="exhibit.300"
           fontWeight="bold"
           letterSpacing="tight"
-          fontSize="5xl"
+          fontSize={{ base: "2xl", md: " 5xl" }}
           display="block"
           align="left"
           mt="2"
@@ -35,6 +36,7 @@ const Introduction = () => {
           />
         </Text>
         <Overview />
+        <Milestone />
       </Stack>
     </>
   );

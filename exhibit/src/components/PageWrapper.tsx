@@ -23,6 +23,7 @@ import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 import { RiArticleLine } from "react-icons/ri";
 import { FaRegFileCode } from "react-icons/fa6";
+import { IoCall } from "react-icons/io5";
 
 const Header = () => {
   const bg = "white";
@@ -193,6 +194,7 @@ const Footer = () => {
 
         <Flex mx="-2" display="flex" alignItems="center">
           <chakra.a
+            target="_blank"
             href="mailto:oogale@uwaterloo.ca"
             mx="2"
             color="gray.600"
@@ -205,6 +207,20 @@ const Footer = () => {
           </chakra.a>
 
           <chakra.a
+            target="_blank"
+            href="tel:+15489949110"
+            mx="2"
+            color="gray.600"
+            _hover={{
+              color: "gray.500",
+            }}
+            aria-label="Phone"
+          >
+            <IoCall size={"25"} />
+          </chakra.a>
+
+          <chakra.a
+            target="_blank"
             href="https://ca.linkedin.com/in/om-ogale"
             mx="2"
             color="gray.600"
@@ -217,6 +233,7 @@ const Footer = () => {
           </chakra.a>
 
           <chakra.a
+            target="_blank"
             href="https://github.com/OmOgale"
             mx="2"
             color="gray.600"

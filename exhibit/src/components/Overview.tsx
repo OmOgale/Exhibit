@@ -16,6 +16,7 @@ const Feature = (props) => {
           w={12}
           rounded="md"
           color="exhibit.200"
+          display={{ sm: "none", md: "unset" }}
         >
           <Icon
             boxSize={6}
@@ -26,7 +27,7 @@ const Feature = (props) => {
           />
         </Flex>
       </Flex>
-      <Box ml={4} mr={12} mb={8}>
+      <Box ml={{ sm: 8, md: 4 }} mr={12} mb={8}>
         <chakra.dt
           fontSize="lg"
           fontWeight="medium"
@@ -52,6 +53,7 @@ export const Overview = () => {
       alignItems="center"
       borderRadius={50}
       mr={100}
+      ml={{ base: -4, sm: 0 }}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
@@ -61,6 +63,7 @@ export const Overview = () => {
             base: 4,
             lg: 8,
           }}
+          w={{ base: 200, md: "auto" }}
         >
           <Box
             textAlign={{
