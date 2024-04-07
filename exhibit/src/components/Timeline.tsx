@@ -98,7 +98,8 @@ const Milestones = () => {
         whiteSpace={"pre-line"}
         color="exhibit.300"
         justifyContent="left"
-        alignItems={"top"}
+        alignItems={"center"}
+        mb={5}
         leftIcon={<BsSuitcaseLgFill size={40} />}
       >
         &nbsp; Experiences
@@ -163,7 +164,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             <em>{location}</em>
           </Text>
-          <Text as={"div"} fontSize="md" w="95%" textAlign="left" ml="10">
+          <Text as={"div"} fontSize="md" w="90%" textAlign="left" ml="10">
             {description}
           </Text>
         </VStack>
