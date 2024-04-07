@@ -13,6 +13,7 @@ import {
   CloseButton,
   Image,
   Link,
+  Stack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -235,9 +236,11 @@ const Footer = () => {
 const PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <Stack gap={0} justifyContent="center">
+        <Header />
+        {children}
+        <Footer />
+      </Stack>
     </>
   );
 };

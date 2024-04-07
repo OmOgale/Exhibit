@@ -1,5 +1,4 @@
 import { Flex, Icon, Box, Link, Stack, Text, chakra } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
@@ -50,10 +49,10 @@ export const Overview = () => {
     <Flex
       bg="exhibit.300"
       p={20}
-      w="auto"
       justifyContent="center"
       alignItems="center"
       borderRadius={50}
+      mr={100}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
@@ -141,8 +140,8 @@ export const Overview = () => {
                 <Text fontWeight={"semibold"}>Tools and Frameworks:</Text>
                 <Text>
                   ReactJS, Node.js, Express.js, Next.js, HTML5, CSS, Flask,
-                  Docker, MongoDB, Git, Bash, Android Debug Bridge, QNX, Agile,
-                  Jira, Slash, VS Code, LaTeX, WordPress, Office 365
+                  Docker, MongoDB, Git, Bash, Vercel, Android Debug Bridge, QNX,
+                  Agile, Jira, Slash, VS Code, LaTeX, WordPress, Office 365
                 </Text>
               </Feature>
 
