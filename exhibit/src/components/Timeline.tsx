@@ -91,7 +91,7 @@ const Milestones = () => {
   return (
     <VStack
       maxWidth="6xl"
-      w={{ base: "75%", xl: "unset" }}
+      w={{ base: "85vw", xl: "unset" }}
       gap={0}
       mt={50}
       textAlign="left"
