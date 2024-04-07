@@ -22,9 +22,8 @@ const Feature = (props) => {
             stroke="currentColor"
             aria-hidden="true"
             as={props.icon}
-          >
-            {/* {props.icon} */}
-          </Icon>
+            mb={5}
+          />
         </Flex>
       </Flex>
       <Box ml={4} mr={12} mb={8}>
@@ -119,11 +118,11 @@ export const Overview = () => {
               }}
             >
               <Feature title="Work Experiences" icon={TbWorldHeart}>
-                I have had extensive hands-on experience 📈 with web development
-                as well as embedded hardware systems and testing through my past
-                experiences. Spearheaded my team at hackathons such as HTN @
-                UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! I have also
-                held leadership positions in debating. 🎤
+                I have had extensive hands-on experience 📈 with full-stack web
+                development as well as embedded hardware systems and testing
+                through my past experiences. Spearheaded my team at hackathons
+                such as HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @
+                McGill! I have also held leadership positions in debating. 🎤
               </Feature>
 
               <Feature title="Projects" icon={FaRegFileCode}>
@@ -137,11 +136,12 @@ export const Overview = () => {
               <Feature title="Tech Stack" icon={AiOutlineThunderbolt}>
                 <Text fontWeight={"semibold"}>Languages:</Text>
                 <Text>TypeScript, Python, C++, C, SQL, Racket</Text>
-                <Text fontWeight={"semibold"}>Tools and Frameworks:</Text>
+                <Text fontWeight={"semibold"}>Tools, Frameworks and APIs:</Text>
                 <Text>
-                  ReactJS, Node.js, Express.js, Next.js, HTML5, CSS, Flask,
-                  Docker, MongoDB, Git, Bash, Vercel, Android Debug Bridge, QNX,
-                  Agile, Jira, Slash, VS Code, LaTeX, WordPress, Office 365
+                  ReactJS, Node.js, Express.js, Next.js, Chakra UI, Material UI,
+                  HTML5, CSS, Flask, Recharts, Google Charts, Docker, MongoDB,
+                  Git, Bash, Vercel, Android Debug Bridge, QNX, Agile, Jira,
+                  Slash, VS Code, LaTeX, WordPress, Office 365
                 </Text>
               </Feature>
 
