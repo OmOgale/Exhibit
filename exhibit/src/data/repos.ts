@@ -29,10 +29,18 @@ export const repositoriesList = [
     url: "https://github.com/PlaceMe-Website/PlaceMe",
   },
   {
+    title: 'Chess',
+    description: "This project was designed as the final project for CS246 (Fall 2023 offering) after multiple planning revisions as well as whiteboard \
+    brainstorming using UML Diagrams. Created in C++ utilizing OOP principles, software design practices such as MVC as well as algorithms for opponent AI such as Minimax with Alpha-Beta pruning.",
+    languages: ['C++'],
+    tools: ['react', 'chakraUi'],
+    url: "https://github.com/OmOgale/CS246-Chess",
+  },
+  {
     title: 'Studybeaver',
     description: "A website I built during the Covid-19 outbreak to bridge the \
       gap caused due to remote learning. Aggregated exam strategies using services from teachers across different curriculums and created practice questions.",
     languages: ['Wordpress', 'HTML', 'CSS'],
     tools: ['react', 'chakraUi'],
-  }
+  },
 ];
