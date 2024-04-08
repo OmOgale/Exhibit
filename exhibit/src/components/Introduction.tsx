@@ -3,7 +3,8 @@ import { Stack } from "@chakra-ui/react";
 import { Overview } from "@/components/Overview";
 import Milestone from "@/components/Timeline";
 import Name from "@/components/Name";
-import Projects from "./projects/Projects";
+import Projects from "@/components/projects/Projects";
+import Resume from "@/components/Resume";
 
 const Introduction = () => {
   return (
@@ -13,6 +14,7 @@ const Introduction = () => {
         <Overview />
         <Milestone />
         <Projects />
+        <Resume />
       </Stack>
     </>
   );

@@ -53,7 +53,8 @@ export const Overview = () => {
       alignItems="center"
       borderRadius={50}
       mr={100}
-      w={{ base: "90vw", md: "unset" }}
+      // TODO: this was unset before for xl. Try to fix if can.
+      w={{ base: "90vw", xl: "70vw"}}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
