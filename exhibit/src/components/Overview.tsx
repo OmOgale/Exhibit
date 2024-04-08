@@ -3,7 +3,6 @@ import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { FaRegFileCode } from "react-icons/fa6";
-import useScrollToElement from "@/hooks/useScrollToElement";
 
 // @ts-ignore
 const Feature = (props) => {
@@ -28,7 +27,7 @@ const Feature = (props) => {
           />
         </Flex>
       </Flex>
-      <Box ml={{ sm: 8, md: 4 }} mb={8}>
+      <Box mb={8}>
         <chakra.dt
           fontSize="lg"
           fontWeight="medium"
@@ -120,7 +119,7 @@ export const Overview = () => {
                 md: 10,
               }}
             >
-              <Feature title="Work Experiences" icon={TbWorldHeart}>
+              <Feature title="Experiences" icon={TbWorldHeart}>
                 I have had extensive hands-on experience 📈 with full-stack web
                 development as well as embedded hardware systems and testing
                 through my past experiences. Lead my team at hackathons such as
