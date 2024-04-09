@@ -86,7 +86,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
           {languages && (
             <Flex justifyContent="space-between" width="100%" height="auto">
               <Box>
-                <SimpleGrid spacing="1" width="full" columns={{sm: 4, md: 5, lg: 6}}>
+                <SimpleGrid spacing="2" width="full" columns={[4, 5]}>
                   {languages.map((lang) => (
                     <Tag
                       key={lang}
