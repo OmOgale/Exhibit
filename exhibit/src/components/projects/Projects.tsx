@@ -8,7 +8,7 @@ import { FaRegFileCode } from "react-icons/fa6";
 
 const Projects = () => {
   return (
-    <Box mt={50}>
+    <Box mt={50} maxW="7xl">
       <HStack alignItems={"center"}>
         <Icon color="exhibit.300" as={FaRegFileCode} fontSize={35} />
         <br />

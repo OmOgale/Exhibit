@@ -3,6 +3,7 @@ import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { FaRegFileCode } from "react-icons/fa6";
+import { ImProfile } from "react-icons/im";
 
 // @ts-ignore
 const Feature = (props) => {
@@ -27,7 +28,7 @@ const Feature = (props) => {
           />
         </Flex>
       </Flex>
-      <Box mb={8}>
+      <Box mb={8} whiteSpace={"pre-line"}>
         <chakra.dt
           fontSize="lg"
           fontWeight="medium"
@@ -54,7 +55,7 @@ export const Overview = () => {
       borderRadius={50}
       mr={100}
       // TODO: this was unset before for xl. Try to fix if can.
-      w={{ base: "90vw", xl: "70vw"}}
+      w={{ base: "90vw", xl: "unset"}}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
@@ -152,6 +153,11 @@ export const Overview = () => {
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
                 ✍️
+              </Feature>
+
+              <Feature title="Resume" icon={ImProfile}>
+                Looking for internships for Fall 2024! 🚀 Feel free to peruse my resume
+                and reach out to me for any opportunities. {"\n"} <Link color="exhibit.300" target="_blank" href="https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing">Resume.pdf</Link>
               </Feature>
             </Stack>
           </Box>

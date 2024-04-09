@@ -9,6 +9,7 @@ import {
   Icon,
   Flex,
   Tooltip,
+  SimpleGrid,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { BiGitRepoForked, BiStar } from "react-icons/bi";
@@ -36,11 +37,10 @@ const RepositoryCard = (props: RepositoryCardProps) => {
 
   return (
     <Box
-      py={2}
+      py={4}
       px={[2, 4]}
       mt={2}
       rounded="xl"
-      borderWidth="1px"
       background="rgba(255, 255, 255, 0.1)" // Semi-transparent background
       backdropFilter="blur(3px)"
       _hover={{
@@ -84,22 +84,23 @@ const RepositoryCard = (props: RepositoryCardProps) => {
             </HStack> */}
           </Flex>
           {languages && (
-            <Flex justifyContent="space-between" width="100%">
+            <Flex justifyContent="space-between" width="100%" height="auto">
               <Box>
-                <HStack spacing="1">
+                <SimpleGrid spacing="1" width="full" columns={{sm: 4, md: 5, lg: 6}}>
                   {languages.map((lang) => (
                     <Tag
                       key={lang}
                       size="sm"
                       colorScheme="cyan"
                       borderRadius="full"
+                      justifyContent="center"
                     >
                       <Text fontSize={["0.55rem", "inherit", "inherit"]}>
                         {lang}
                       </Text>
                     </Tag>
                   ))}
-                </HStack>
+                </SimpleGrid>
               </Box>
             </Flex>
           )}

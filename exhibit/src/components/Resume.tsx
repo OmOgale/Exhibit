@@ -1,6 +1,5 @@
 "use client";
 import { Box, Link, HStack, Icon, chakra, Text } from "@chakra-ui/react";
-import { ImProfile } from "react-icons/im";
 
 const Resume = () => {
   return (
