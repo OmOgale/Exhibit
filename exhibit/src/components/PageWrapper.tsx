@@ -74,7 +74,7 @@ const Header = () => {
                   Blog
                 </Button>
               </Link>
-              <Link as={NextLink} href="/projects">
+              {/* <Link as={NextLink} href="/projects">
                 <Button
                   variant="ghost"
                   color="black"
@@ -84,7 +84,7 @@ const Header = () => {
                 >
                   Projects
                 </Button>
-              </Link>
+              </Link> */}
             </HStack>
             <Box
               display={{
@@ -137,7 +137,7 @@ const Header = () => {
                     Blog
                   </Button>
                 </Link>
-                <Link as={NextLink} href="/projects">
+                {/* <Link as={NextLink} href="/projects">
                   <Button
                     w="full"
                     variant="ghost"
@@ -148,7 +148,7 @@ const Header = () => {
                   >
                     Projects
                   </Button>
-                </Link>
+                </Link> */}
               </VStack>
             </Box>
           </HStack>
