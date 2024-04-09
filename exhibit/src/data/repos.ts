@@ -1,3 +1,10 @@
+import { FaChess } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { FaRegFileZipper } from "react-icons/fa6";
+import { FaRegNewspaper } from "react-icons/fa6";
+import { GrMapLocation } from "react-icons/gr";
+import { MdOutlineSchool } from "react-icons/md";
+
 export const repositoriesList = [
   {
     title: "Om's Exhibit",
@@ -5,6 +12,7 @@ export const repositoriesList = [
     languages: ['Typescript', 'ReactJS', 'ChakraUI', 'Vercel'],
     tools: ['Nextjs', 'react', 'chakraUi'],
     url: 'https://omogale.vercel.app/',
+    icon: CgProfile,
   },
   {
     title: 'Zippy',
@@ -12,6 +20,7 @@ export const repositoriesList = [
     languages: ['C++', 'Python', 'Docker'],
     tools: ['Nextjs', 'react', 'chakraUi'],
     url: 'https://github.com/OmOgale/Zippy',
+    icon: FaRegFileZipper,
   },
   {
     title: 'DailyDive',
@@ -19,6 +28,7 @@ export const repositoriesList = [
     languages: ['Typescript', 'ReactJS', 'Python', 'Flask', 'TailwindCSS'],
     tools: ['react', 'chakraUi'],
     url: 'https://github.com/Everyday-Newsletter/',
+    icon: FaRegNewspaper,
   },
   {
     title: 'PlaceMe',
@@ -27,6 +37,7 @@ export const repositoriesList = [
     labels: ["WIP"],
     tools: ['react', 'chakraUi'],
     url: "https://github.com/PlaceMe-Website/PlaceMe",
+    icon: GrMapLocation,
   },
   {
     title: 'Chess',
@@ -35,6 +46,7 @@ export const repositoriesList = [
     languages: ['C++'],
     tools: ['react', 'chakraUi'],
     url: "https://github.com/OmOgale/CS246-Chess",
+    icon: FaChess,
   },
   {
     title: 'Studybeaver',
@@ -42,5 +54,6 @@ export const repositoriesList = [
       gap caused due to remote learning. Aggregated exam strategies using services from teachers across different curriculums and created practice questions.",
     languages: ['Wordpress', 'HTML', 'CSS'],
     tools: ['react', 'chakraUi'],
+    icon: MdOutlineSchool,
   },
 ];

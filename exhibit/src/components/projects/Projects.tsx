@@ -45,6 +45,7 @@ const Projects = () => {
             tools={repo.tools}
             url={repo.url}
             labels={repo.labels}
+            icon={repo.icon}
           />
         ))}
       </Stack>

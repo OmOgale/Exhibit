@@ -15,6 +15,7 @@ import {
 import { BiGitRepoForked, BiStar } from "react-icons/bi";
 import { FiGithub } from "react-icons/fi";
 import { LiaSignLanguageSolid } from "react-icons/lia";
+import { IconType } from "react-icons";
 
 interface RepositoryCardProps {
   title: string;
@@ -23,9 +24,10 @@ interface RepositoryCardProps {
   languages?: string[];
   tools?: string[];
   labels?: string[];
+  icon?: IconType;
 }
 const RepositoryCard = (props: RepositoryCardProps) => {
-  const { title, description, languages, url, tools, labels } = props;
+  const { title, description, languages, url, tools, labels, icon } = props;
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLParagraphElement, MouseEvent>,
@@ -66,22 +68,17 @@ const RepositoryCard = (props: RepositoryCardProps) => {
                 {title}
               </Text>
             </HStack>
-            {/* <HStack cursor="pointer" onClick={(e) => handleLinkClick(e, url)}>
-              {forks_count && (
+            <HStack cursor="pointer">
+              {/* {forks_count && (
                 <Flex _hover={{ color: "blue.500" }} alignItems="center">
                   <Icon as={BiGitRepoForked} boxSize="0.9em" mt="1px" />
                   <Box as="span" ml="1" fontSize="sm">
                     {forks_count}
                   </Box>
                 </Flex>
-              )}
-              <Flex alignItems="center" _hover={{ color: "blue.500" }}>
-                <Icon as={BiStar} boxSize="0.9em" mt="1px" />
-                <Box as="span" ml="1" fontSize="sm">
-                  {stargazers_count}
-                </Box>
-              </Flex>
-            </HStack> */}
+              )} */}
+              <Icon as={icon} boxSize="0.9em" mt="1px" />
+            </HStack>
           </Flex>
           {languages && (
             <Flex justifyContent="space-between" width="100%" height="auto">
