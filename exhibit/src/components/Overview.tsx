@@ -100,10 +100,10 @@ export const Overview = ({
   return (
     <Flex
       bg="exhibit.300"
-      p={10}
+      p={{base: 6, sm: 10}}
       justifyContent="center"
       alignItems="center"
-      borderRadius={50}
+      borderRadius={{base: 30, sm: 50}}
       mr={100}
       // TODO: this was unset before for xl. Try to fix if can.
       w={{ base: "90vw", xl: "unset" }}
