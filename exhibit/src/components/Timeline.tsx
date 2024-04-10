@@ -133,6 +133,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
       borderTop="8px"
       borderColor="exhibit.300"
       gap={1}
+      ml={{"2xl": 12}}
     >
       <Icon
         as={icon}
@@ -141,7 +142,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
         color="white"
       />
       <Box>
-        <VStack spacing={2} mb={3} textAlign="left" color={"black"}>
+        <VStack spacing={2} mb={3} textAlign="left" color={"black"} mr={{"2xl": 10}}>
           <Text
             fontSize={["sm", "lg"]}
             color="exhibit.300"
