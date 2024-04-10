@@ -48,14 +48,18 @@ const Feature = (props) => {
       </Flex>
       <Box mb={8} whiteSpace={"pre-line"}>
         <chakra.dt
-          fontSize="lg"
+          fontSize={{ base: "md", sm: "lg" }}
           fontWeight="medium"
           lineHeight="6"
           color="gray.900"
         >
           {props.title}
         </chakra.dt>
-        <chakra.dd mt={2} color="gray.500">
+        <chakra.dd
+          mt={2}
+          fontSize={{ base: "sm", sm: "unset" }}
+          color="gray.500"
+        >
           {props.children}
         </chakra.dd>
       </Box>
@@ -103,7 +107,7 @@ export const Overview = ({
             <chakra.p
               mt={2}
               fontSize={{
-                base: "3xl",
+                base: "2xl",
                 sm: "4xl",
               }}
               lineHeight="8"
@@ -116,7 +120,7 @@ export const Overview = ({
             <chakra.p
               mt={4}
               maxW="2xl"
-              fontSize="xl"
+              fontSize={{ base: "md", sm: "xl" }}
               mx={{
                 lg: "auto",
               }}
@@ -194,11 +198,7 @@ export const Overview = ({
                 </Text>
               </Feature>
 
-              <Feature
-                title="Blog"
-                icon={RiArticleLine}
-                href={"/blog"}
-              >
+              <Feature title="Blog" icon={RiArticleLine} href={"/blog"}>
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
                 ✍️
