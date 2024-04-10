@@ -33,7 +33,7 @@ const Feature = (props) => {
               />
             </ScrollLink>
           ) : (
-            <chakra.a href={props.href} target="_blank">
+            <Link href={props.href} as={NextLink}>
               <Icon
                 boxSize={6}
                 stroke="currentColor"
@@ -42,7 +42,7 @@ const Feature = (props) => {
                 mb={5}
                 _hover={{ color: "exhibit.300" }}
               />
-            </chakra.a>
+            </Link>
           )}
         </Flex>
       </Flex>
@@ -197,7 +197,7 @@ export const Overview = ({
               <Feature
                 title="Blog"
                 icon={RiArticleLine}
-                href={"https://omogale.vercel.app/blog"}
+                href={"/blog"}
               >
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
