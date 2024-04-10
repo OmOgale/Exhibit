@@ -4,6 +4,8 @@ import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { FaCodeBranch } from "react-icons/fa";
+import { Link as ScrollLink } from "react-scroll";
+import NextLink from "next/link";
 
 // @ts-ignore
 const Feature = (props) => {
@@ -19,13 +21,29 @@ const Feature = (props) => {
           color="exhibit.200"
           display={{ base: "none", md: "unset" }}
         >
-          <Icon
-            boxSize={6}
-            stroke="currentColor"
-            aria-hidden="true"
-            as={props.icon}
-            mb={5}
-          />
+          {props.to ? (
+            <ScrollLink to={props.to} smooth={true} duration={1000}>
+              <Icon
+                boxSize={6}
+                stroke="currentColor"
+                aria-hidden="true"
+                as={props.icon}
+                mb={5}
+                _hover={{ color: "exhibit.300" }}
+              />
+            </ScrollLink>
+          ) : (
+            <chakra.a href={props.href} target="_blank">
+              <Icon
+                boxSize={6}
+                stroke="currentColor"
+                aria-hidden="true"
+                as={props.icon}
+                mb={5}
+                _hover={{ color: "exhibit.300" }}
+              />
+            </chakra.a>
+          )}
         </Flex>
       </Flex>
       <Box mb={8} whiteSpace={"pre-line"}>
@@ -45,7 +63,18 @@ const Feature = (props) => {
   );
 };
 
-export const Overview = () => {
+Feature.defaultProps = {
+  to: null,
+  href: null,
+};
+
+export const Overview = ({
+  projects,
+  experiences,
+}: {
+  projects: string;
+  experiences: string;
+}) => {
   return (
     <Flex
       bg="exhibit.300"
@@ -55,7 +84,7 @@ export const Overview = () => {
       borderRadius={50}
       mr={100}
       // TODO: this was unset before for xl. Try to fix if can.
-      w={{ base: "90vw", xl: "unset"}}
+      w={{ base: "90vw", xl: "unset" }}
     >
       <Box py={12} bg="white" rounded="xl">
         <Box
@@ -99,6 +128,18 @@ export const Overview = () => {
               </Link>{" "}
               👨‍💻
             </chakra.p>
+            <chakra.p
+              mt={4}
+              maxW="2xl"
+              fontSize="sm"
+              mx={{
+                lg: "auto",
+              }}
+              color="gray.500"
+              display={{ base: "none", md: "unset" }}
+            >
+              (You can quick navigate by clicking the icons below!)
+            </chakra.p>
           </Box>
 
           <Box mt={10}>
@@ -121,7 +162,7 @@ export const Overview = () => {
                 md: 10,
               }}
             >
-              <Feature title="Experiences" icon={TbWorldHeart}>
+              <Feature title="Experiences" icon={TbWorldHeart} to={experiences}>
                 I have had extensive hands-on experience 📈 with full-stack web
                 development as well as embedded hardware systems and testing
                 through my past experiences. Lead my team at hackathons such as
@@ -129,7 +170,7 @@ export const Overview = () => {
                 also held leadership positions in debating. 🎤
               </Feature>
 
-              <Feature title="Projects" icon={FaCodeBranch}>
+              <Feature title="Projects" icon={FaCodeBranch} to={projects}>
                 Focused on spearheading projects with real-world usecases ❤️.
                 Have developed projects in multiple stacks including full-stack
                 development with the MERN stack as well as alternate frameworks
@@ -137,7 +178,11 @@ export const Overview = () => {
                 and Python projects.
               </Feature>
 
-              <Feature title="Tech Stack" icon={AiOutlineThunderbolt}>
+              <Feature
+                title="Tech Stack"
+                icon={AiOutlineThunderbolt}
+                href={"https://github.com/OmOgale"}
+              >
                 <Text fontWeight={"semibold"}>Languages:</Text>
                 <Text>TypeScript, Python, C++, C, SQL, Racket</Text>
                 <Text fontWeight={"semibold"}>Tools, Frameworks and APIs:</Text>
@@ -149,15 +194,32 @@ export const Overview = () => {
                 </Text>
               </Feature>
 
-              <Feature title="Blog" icon={RiArticleLine}>
+              <Feature
+                title="Blog"
+                icon={RiArticleLine}
+                href={"https://omogale.vercel.app/blog"}
+              >
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
                 ✍️
               </Feature>
 
-              <Feature title="Resume" icon={ImProfile}>
-                Looking for internships for Fall 2024! 🚀 Feel free to peruse my resume
-                and reach out to me for any opportunities. {"\n"} <Link color="exhibit.300" target="_blank" href="https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing">Resume.pdf</Link>
+              <Feature
+                title="Resume"
+                icon={ImProfile}
+                href={
+                  "https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing"
+                }
+              >
+                Looking for internships for Fall 2024! 🚀 Feel free to peruse my
+                resume and reach out to me for any opportunities. {"\n"}{" "}
+                <Link
+                  color="exhibit.300"
+                  target="_blank"
+                  href="https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing"
+                >
+                  Resume.pdf
+                </Link>
               </Feature>
             </Stack>
           </Box>
