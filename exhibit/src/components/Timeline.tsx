@@ -12,11 +12,7 @@ import {
   Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
-// Here we have used react-icons package for the icons
-import { FaRegNewspaper } from "react-icons/fa";
-import { BsGithub } from "react-icons/bs";
 import { IconType } from "react-icons";
-import { BsSuitcaseLgFill } from "react-icons/bs";
 import { SiFord } from "react-icons/si";
 import { TbWorldHeart } from "react-icons/tb";
 

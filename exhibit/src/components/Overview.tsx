@@ -29,7 +29,7 @@ const Feature = (props) => {
                 aria-hidden="true"
                 as={props.icon}
                 mb={5}
-                _hover={{ color: "exhibit.300" }}
+                _hover={{ color: "exhibit.300", cursor: "pointer" }}
               />
             </ScrollLink>
           ) : (

@@ -19,5 +19,6 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
   title: "Om's Exhibit",
-  description: "This is Om's personal portfolio website."
+  description: "This is Om's personal portfolio website.",
+  icons: "/om_photo.png",
 }
