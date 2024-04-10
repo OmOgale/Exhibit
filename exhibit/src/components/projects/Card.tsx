@@ -57,9 +57,9 @@ const RepositoryCard = (props: RepositoryCardProps) => {
         <VStack spacing={1} align="start" w="full">
           <Flex justifyContent="space-between" width="full">
             <HStack cursor="pointer">
-              <Icon as={FiGithub} boxSize="0.9em" mt="1px" />
+              <Icon as={FiGithub} boxSize={["0.9em", "1.5em"]} mt="1px" />
               <Text
-                fontSize="sm"
+                fontSize={["sm", "xl"]}
                 noOfLines={1}
                 fontWeight="700"
                 align="left"
@@ -77,22 +77,22 @@ const RepositoryCard = (props: RepositoryCardProps) => {
                   </Box>
                 </Flex>
               )} */}
-              <Icon as={icon} boxSize="0.9em" mt="1px" />
+              <Icon as={icon} boxSize={["0.9em", "1.5em"]} mt="1px" />
             </HStack>
           </Flex>
           {languages && (
             <Flex justifyContent="space-between" width="100%" height="auto">
               <Box>
-                <SimpleGrid spacing="2" width="full" columns={[4, 5]}>
+                <SimpleGrid spacing="2" width="full" columns={4}>
                   {languages.map((lang) => (
                     <Tag
                       key={lang}
-                      size="sm"
+                      size={["sm", "md"]}
                       colorScheme="cyan"
                       borderRadius="full"
                       justifyContent="center"
                     >
-                      <Text fontSize={["0.55rem", "inherit", "inherit"]}>
+                      <Text fontSize={["0.6rem", "inherit", "inherit"]}>
                         {lang}
                       </Text>
                     </Tag>
@@ -108,7 +108,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
                   {labels.map((label) => (
                     <Tag
                       key={label}
-                      size="sm"
+                      size={["sm", "md"]}
                       colorScheme="orange"
                       borderRadius="full"
                     >
@@ -123,7 +123,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
           )}
         </VStack>
         <Box>
-          <Text fontWeight="450" fontSize="sm" textAlign="left">
+          <Text fontWeight="450" fontSize={["xs", "md"]} textAlign="left" mt={1}>
             {description}
           </Text>
         </Box>

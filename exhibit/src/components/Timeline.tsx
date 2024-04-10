@@ -91,15 +91,15 @@ const milestones = [
 const Timeline = () => {
   return (
     <VStack
-      maxWidth="6xl"
-      w={{ base: "85vw", xl: "unset" }}
+      maxWidth="7xl"
+      w={{ base: "85vw", xl: "80vw", "2xl": "65vw"}}
       gap={0}
       mt={50}
     >
       <HStack justifyContent={"left"} w="100%">
-        <Icon color="exhibit.300" as={TbWorldHeart} fontSize={35}/>
+        <Icon color="exhibit.300" as={TbWorldHeart} fontSize={[25, 35]}/>
         <br />
-        <Text color="exhibit.300" fontWeight="extrabold" fontSize="4xl">Experiences</Text>
+        <Text color="exhibit.300" fontWeight="extrabold" fontSize={["2xl", "4xl"]}>Experiences</Text>
       </HStack>
 
       {milestones.map((milestone, index) => (
@@ -143,7 +143,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
       <Box>
         <VStack spacing={2} mb={3} textAlign="left" color={"black"}>
           <Text
-            fontSize="lg"
+            fontSize={["sm", "lg"]}
             color="exhibit.300"
             fontWeight="semibold"
             w="100%"
@@ -151,11 +151,11 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             {date}
           </Text>
-          <chakra.h1 fontSize="2xl" lineHeight={1.2} fontWeight="bold" color="white" w="100%">
+          <chakra.h1 fontSize={["lg", "2xl"]} lineHeight={1.2} fontWeight="bold" color="white" w="100%">
             {title}
           </chakra.h1>
           <Text
-            fontSize="md"
+            fontSize={["sm", "md"]}
             w="100%"
             textAlign="left"
             color="exhibit.300"
@@ -163,7 +163,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             <em>{location}</em>
           </Text>
-          <Text as={"div"} fontSize="md" fontWeight={"semibold"} w="90%" textAlign="left" ml={5} color="white">
+          <Text as={"div"} fontSize={["xs", "md"]} w="90%" textAlign="left" ml={5} color="white">
             {description}
           </Text>
         </VStack>

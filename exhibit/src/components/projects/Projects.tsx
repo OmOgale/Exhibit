@@ -10,9 +10,9 @@ const Projects = () => {
   return (
     <Box mt={50} maxW="7xl">
       <HStack alignItems={"center"}>
-        <Icon color="exhibit.300" as={FaRegFileCode} fontSize={35} />
+        <Icon color="exhibit.300" as={FaRegFileCode} fontSize={[25, 35]} />
         <br />
-        <Text color="exhibit.300" fontWeight="extrabold" fontSize="4xl">
+        <Text color="exhibit.300" fontWeight="extrabold" fontSize={["2xl", "4xl"]}>
           Projects
         </Text>
       </HStack>
@@ -34,7 +34,7 @@ const Projects = () => {
         gridRowGap={{
           sm: 12,
         }}
-        w={{ base: "85vw", xl: "70vw" }}
+        w={{ base: "85vw", xl: "80vw", "2xl": "65vw" }}
       >
         {repositoriesList?.map((repo, index) => (
           <RepositoryCard
