@@ -144,7 +144,7 @@ export const Overview = ({
               }}
               color="gray.500"
             >
-              A sophomore (2B) studying Computer Science at the{" "}
+              A sophomore (2B) studying Computer Science (Honours Co-op) at the{" "}
               <Link target="_blank" href="https://uwaterloo.ca/">
                 University of Waterloo.
               </Link>{" "}
