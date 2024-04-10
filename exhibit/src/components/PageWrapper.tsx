@@ -22,8 +22,8 @@ import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 import { RiArticleLine } from "react-icons/ri";
-import { FaRegFileCode } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
+import { FaCodeBranch } from "react-icons/fa";
 
 const Header = () => {
   const bg = "white";

@@ -4,13 +4,13 @@ import { useMediaQuery, Container, Box, Stack, HStack, Icon, Text } from "@chakr
 import StackGrid from "react-stack-grid";
 import { repositoriesList } from "@/data/repos";
 import RepositoryCard from "./Card";
-import { FaRegFileCode } from "react-icons/fa6";
+import { FaCodeBranch } from "react-icons/fa";
 
 const Projects = () => {
   return (
     <Box mt={50} maxW="7xl">
       <HStack alignItems={"center"}>
-        <Icon color="exhibit.300" as={FaRegFileCode} fontSize={[25, 35]} />
+        <Icon color="exhibit.300" as={FaCodeBranch} fontSize={[25, 35]} />
         <br />
         <Text color="exhibit.300" fontWeight="extrabold" fontSize={["2xl", "4xl"]}>
           Projects

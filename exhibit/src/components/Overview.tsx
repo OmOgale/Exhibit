@@ -2,8 +2,8 @@ import { Flex, Icon, Box, Link, Stack, Text, chakra } from "@chakra-ui/react";
 import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
-import { FaRegFileCode } from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
+import { FaCodeBranch } from "react-icons/fa";
 
 // @ts-ignore
 const Feature = (props) => {
@@ -129,7 +129,7 @@ export const Overview = () => {
                 also held leadership positions in debating. 🎤
               </Feature>
 
-              <Feature title="Projects" icon={FaRegFileCode}>
+              <Feature title="Projects" icon={FaCodeBranch}>
                 Focused on spearheading projects with real-world usecases ❤️.
                 Have developed projects in multiple stacks including full-stack
                 development with the MERN stack as well as alternate frameworks
