@@ -43,11 +43,12 @@ const RepositoryCard = (props: RepositoryCardProps) => {
       px={[2, 4]}
       mt={2}
       rounded="xl"
-      background="rgba(255, 255, 255, 0.1)" // Semi-transparent background
+      background="rgba(255, 255, 255, 0.1)"
       backdropFilter="blur(3px)"
       _hover={{
-        background: "rgba(255, 255, 255, 0.2)", // Change the background color on hover
-        backdropFilter: "blur(4px)", // Increase the blur on hover
+        background: "rgba(255, 255, 255, 0.2)", 
+        backdropFilter: "blur(4px)",
+        cursor: url ? "pointer" : "default"
       }}
       onClick={(e) => handleLinkClick(e, url)}
       height="auto"
