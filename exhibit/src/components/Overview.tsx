@@ -33,7 +33,7 @@ const Feature = (props) => {
               />
             </ScrollLink>
           ) : (
-            <Link href={props.href} as={NextLink}>
+            <Link target={props._self ? "_self" : "_blank"} href={props.href} as={NextLink}>
               <Icon
                 boxSize={6}
                 stroke="currentColor"
@@ -70,6 +70,7 @@ const Feature = (props) => {
 Feature.defaultProps = {
   to: null,
   href: null,
+  _self: false,
 };
 
 export const Overview = ({
@@ -186,6 +187,7 @@ export const Overview = ({
                 title="Tech Stack"
                 icon={AiOutlineThunderbolt}
                 href={"https://github.com/OmOgale"}
+                _self = {false}
               >
                 <Text fontWeight={"semibold"}>Languages:</Text>
                 <Text>TypeScript, Python, C++, C, SQL, Racket</Text>
@@ -198,7 +200,12 @@ export const Overview = ({
                 </Text>
               </Feature>
 
-              <Feature title="Blog" icon={RiArticleLine} href={"/blog"}>
+              <Feature
+                title="Blog"
+                icon={RiArticleLine}
+                href={"/blog"}
+                _self={true}
+              >
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
                 ✍️
@@ -210,6 +217,7 @@ export const Overview = ({
                 href={
                   "https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing"
                 }
+                _self={false}
               >
                 Looking for internships for Fall 2024! 🚀 Feel free to peruse my
                 resume and reach out to me for any opportunities. {"\n"}{" "}
