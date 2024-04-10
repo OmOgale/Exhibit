@@ -23,7 +23,6 @@ import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 import { RiArticleLine } from "react-icons/ri";
 import { IoCall } from "react-icons/io5";
-import { FaCodeBranch } from "react-icons/fa";
 
 const Header = () => {
   const bg = "white";

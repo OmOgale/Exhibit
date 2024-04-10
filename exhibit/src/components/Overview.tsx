@@ -1,9 +1,22 @@
-import { Flex, Icon, Box, Link, Stack, Text, chakra } from "@chakra-ui/react";
+import {
+  Flex,
+  Icon,
+  Box,
+  Link,
+  Stack,
+  Text,
+  chakra,
+  HStack,
+} from "@chakra-ui/react";
 import { RiArticleLine } from "react-icons/ri";
 import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { FaCodeBranch } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import { MdAttachEmail } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
 import { Link as ScrollLink } from "react-scroll";
 import NextLink from "next/link";
 
@@ -33,7 +46,11 @@ const Feature = (props) => {
               />
             </ScrollLink>
           ) : (
-            <Link target={props._self ? "_self" : "_blank"} href={props.href} as={NextLink}>
+            <Link
+              target={props._self ? "_self" : "_blank"}
+              href={props.href}
+              as={NextLink}
+            >
               <Icon
                 boxSize={6}
                 stroke="currentColor"
@@ -133,8 +150,60 @@ export const Overview = ({
               </Link>{" "}
               👨‍💻
             </chakra.p>
+            <HStack
+              maxW="2xl"
+              mx={{
+                lg: "auto",
+              }}
+              color="gray.500"
+              justifyContent={"center"}
+              alignItems={"center"}
+              mt={2}
+              spacing={3}
+            >
+              <Link
+                target="_blank"
+                href="https://ca.linkedin.com/in/om-ogale"
+                aria-label="LinkedIn"
+              >
+                <Icon
+                  boxSize={6}
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  as={FaLinkedin}
+                  _hover={{ color: "exhibit.300" }}
+                />
+              </Link>
+              <Link
+                target="_blank"
+                href="mailto:oogale@uwaterloo.ca"
+                aria-label="Email"
+              >
+                <Icon
+                  boxSize={6}
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  as={MdAttachEmail}
+
+                  _hover={{ color: "exhibit.300" }}
+                />
+              </Link>
+              <Link
+                target="_blank"
+                href="tel:+15489949110"
+                aria-label="Phone"
+              >
+                <Icon
+                  boxSize={6}
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  as={IoCall}
+
+                  _hover={{ color: "exhibit.300" }}
+                />
+              </Link>
+            </HStack>
             <chakra.p
-              mt={4}
               maxW="2xl"
               fontSize="sm"
               mx={{
@@ -187,7 +256,7 @@ export const Overview = ({
                 title="Tech Stack"
                 icon={AiOutlineThunderbolt}
                 href={"https://github.com/OmOgale"}
-                _self = {false}
+                _self={false}
               >
                 <Text fontWeight={"semibold"}>Languages:</Text>
                 <Text>TypeScript, Python, C++, C, SQL, Racket</Text>
