@@ -46,6 +46,7 @@ const Projects = () => {
             url={repo.url}
             labels={repo.labels}
             icon={repo.icon}
+            toastText={repo.toast}
           />
         ))}
       </Stack>

@@ -11,8 +11,8 @@ export const repositoriesList = [
     description: "My portfolio website which is a showcase of my projects, skills and experiences. I also have a blog in-progress where I plan to jot down my thoughts and experiences.",
     languages: ['Typescript', 'ReactJS', 'ChakraUI', 'Vercel'],
     tools: ['Nextjs', 'react', 'chakraUi'],
-    url: 'https://omogale.vercel.app/',
     icon: CgProfile,
+    toast: "You are already here lol :)",
   },
   {
     title: 'Zippy',

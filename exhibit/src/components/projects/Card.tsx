@@ -10,6 +10,7 @@ import {
   Flex,
   Tooltip,
   SimpleGrid,
+  useToast,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { BiGitRepoForked, BiStar } from "react-icons/bi";
@@ -25,9 +26,11 @@ interface RepositoryCardProps {
   tools?: string[];
   labels?: string[];
   icon?: IconType;
+  toastText?: string;
 }
 const RepositoryCard = (props: RepositoryCardProps) => {
-  const { title, description, languages, url, tools, labels, icon } = props;
+  const { title, description, languages, url, tools, labels, icon, toastText } = props;
+  const toast = useToast();
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLParagraphElement, MouseEvent>,
@@ -36,6 +39,17 @@ const RepositoryCard = (props: RepositoryCardProps) => {
     link ? window.open(link) : null;
     e.stopPropagation();
   };
+
+  const handleToast = (toastText: string) => {
+    toast({
+      title: toastText,
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+      colorScheme: "pink",
+      position: "top",
+    });
+  }
 
   return (
     <Box
@@ -48,9 +62,9 @@ const RepositoryCard = (props: RepositoryCardProps) => {
       _hover={{
         background: "rgba(255, 255, 255, 0.2)", 
         backdropFilter: "blur(4px)",
-        cursor: url ? "pointer" : "default"
+        cursor: url || toastText ? "pointer" : "default"
       }}
-      onClick={(e) => handleLinkClick(e, url)}
+      onClick={toastText ? (e) => handleToast(toastText) : (e) => handleLinkClick(e, url)}
       height="auto"
       mb={5}
     >
