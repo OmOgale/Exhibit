@@ -1,7 +1,7 @@
 "use client";
 import { Stack } from "@chakra-ui/react";
 import { Overview } from "@/components/Overview";
-import Milestone from "@/components/Timeline";
+import Timeline from "@/components/Timeline";
 import Name from "@/components/Name";
 import Projects from "@/components/projects/Projects";
 import {
@@ -37,7 +37,7 @@ const Introduction = () => {
         <Name />
         <Overview projects={"projects"} experiences={"experiences"} />
         <Element name="experiences" className="element">
-          <Milestone />
+          <Timeline />
         </Element>
         <Element name="projects" className="element">
           <Projects />
