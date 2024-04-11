@@ -46,7 +46,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
       status: "info",
       duration: 3000,
       isClosable: true,
-      colorScheme: "pink",
+      colorScheme: "exhibit",
       position: "top",
     });
   }
