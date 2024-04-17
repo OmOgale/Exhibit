@@ -1,11 +1,33 @@
-'use client'
+"use client";
 import { Hero } from "@/components/Hero";
 import { useState, useEffect } from "react";
-import { Box, Link, VStack, Text } from '@chakra-ui/react';
+import { Box, Link, VStack, Text } from "@chakra-ui/react";
+import { darken } from "polished";
+
+const generateRandomColor = () => {
+  let n = (Math.random() * 0xfffff * 1000000).toString(16);
+  let color = '#' + n.slice(0, 6);
+  while(isTooBright(color)) {
+    n = (Math.random() * 0xfffff * 1000000).toString(16);
+    color = '#' + n.slice(0, 6);
+  }
+  return color;
+}
+
+const isTooBright = (color: string) => {
+  const c = color.substring(1);
+  const rgb = parseInt(c, 16);
+  const r = (rgb >> 16) & 0xff;  // extract red
+  const g = (rgb >>  8) & 0xff;  // extract green
+  const b = (rgb >>  0) & 0xff;  // extract blue
+
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+  return luma > 250; // Return if too bright
+}
 
 export default function NotFound() {
-
-    const [color, setColor] = useState("exhibit.200"); // Initial color
+  const [color, setColor] = useState("exhibit.200"); // Initial color
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -20,15 +42,21 @@ export default function NotFound() {
 
   return (
     <>
-        <Hero bg={color} h={"100vh"}>
-            <VStack alignItems="center" justifyContent="center" width="full">
-                <Box fontSize="7xl" fontWeight="bold" mb={4}>
-                    <Text>404</Text>
-                </Box>
-                <Text fontWeight={"bold"}>The page you are looking for doesn&apos;t exist</Text>
-                <Link href="/"><Text fontWeight={"bold"}><em>Back to Home &rarr;</em></Text></Link>
-            </VStack>
-        </Hero>
+      <Hero bg={color} h={"100vh"}>
+        <VStack alignItems="center" justifyContent="center" width="full">
+          <Box fontSize="7xl" fontWeight="bold" mb={4}>
+            <Text>404</Text>
+          </Box>
+          <Text fontWeight={"bold"}>
+            The page you are looking for doesn&apos;t exist
+          </Text>
+          <Link href="/">
+            <Text fontWeight={"bold"}>
+              <em>Back to Home &rarr;</em>
+            </Text>
+          </Link>
+        </VStack>
+      </Hero>
     </>
-  )
+  );
 }
