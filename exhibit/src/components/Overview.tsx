@@ -14,7 +14,7 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { FaCodeBranch } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+import { PiLightbulbBold } from "react-icons/pi";
 import { MdAttachEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { Link as ScrollLink } from "react-scroll";
@@ -93,9 +93,11 @@ Feature.defaultProps = {
 export const Overview = ({
   projects,
   experiences,
+  milestones,
 }: {
   projects: string;
   experiences: string;
+  milestones: string;
 }) => {
   return (
     <Flex
@@ -278,6 +280,14 @@ export const Overview = ({
                 I love writing stuff about touching topics and, unsurprisingly
                 tech! 😅 Feel free to go through some of my articles and poetry.
                 ✍️
+              </Feature>
+
+              <Feature
+                title="Milestones"
+                icon={PiLightbulbBold}
+                to={milestones}
+              >
+                A summary of the progress I have made throughout the years with my notable exploits 🏆 as well as some fun facts! 😄 
               </Feature>
 
               <Feature

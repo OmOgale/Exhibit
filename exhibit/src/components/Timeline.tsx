@@ -148,7 +148,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             {date}
           </Text>
-          <chakra.h1 fontSize={["lg", "2xl"]} lineHeight={1.2} fontWeight="bold" color="white" w="100%">
+          <chakra.h1 fontSize={["md", "2xl"]} lineHeight={1.2} fontWeight="bold" color="white" w="100%">
             {title}
           </chakra.h1>
           <Text

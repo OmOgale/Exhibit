@@ -13,6 +13,7 @@ import {
   scrollSpy,
 } from "react-scroll";
 import { useEffect } from "react";
+import Milestones from "./Milestones";
 
 const Introduction = () => {
   useEffect(() => {
@@ -35,12 +36,15 @@ const Introduction = () => {
     <>
       <Stack ml={{ base: "5vw", "2xl": 300 }} mt={100} display="flex">
         <Name />
-        <Overview projects={"projects"} experiences={"experiences"} />
+        <Overview projects={"projects"} experiences={"experiences"} milestones={"milestones"}/>
         <Element name="experiences" className="element">
           <Timeline />
         </Element>
         <Element name="projects" className="element">
           <Projects />
+        </Element>
+        <Element name="milestones" className="element">
+          <Milestones />
         </Element>
       </Stack>
     </>

@@ -105,6 +105,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
                       size={["sm", "md"]}
                       colorScheme="cyan"
                       borderRadius="full"
+                      flex="auto"
                       justifyContent="center"
                     >
                       <Text fontSize={["0.6rem", "inherit", "inherit"]}>
