@@ -170,14 +170,9 @@ const milestoneItems = {
 };
 
 const Milestones = () => {
-  const linkColor = "cyan.300";
-  const linkHoverColor = "cyan.400";
-  {
-    console.log(Object.entries(milestoneItems));
-  }
 
   return (
-    <Stack maxW="7xl" mt={50}>
+    <Stack maxW="7xl" mt={50} gap={0}>
       <HStack alignItems={"center"}>
         <Icon color="exhibit.300" as={PiLightbulbBold} fontSize={[25, 35]} />
         <br />

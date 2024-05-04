@@ -10,7 +10,6 @@ import {
   VStack,
   Flex,
   Icon,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import { SiFord } from "react-icons/si";
@@ -24,16 +23,18 @@ const milestones = [
     description: (
       <ul text-align="left">
         <li>
-          Setup the First installation of Ford&lsquo;s latest in-development
-          infotainment system in the Performance Lab.
+          Spearheaded a 50% increase in the total number of reports by
+          developing dynamic KPI reports involving complex charting and
+          breakdowns by utilizing APIs such as Recharts and Google Charts.
         </li>
         <li>
-          Developing key KPIs for identifying performance bottlenecks utilizing
-          OOPs, internal APIs and Slash in Python within an Agile framework.
+          Devised an entirely new frontend for representing metrics for an ECU (Electronic Control Unit) using Material UI as well as internal Ford APIs. Ideated global UI features such as an intricate collapsing sidebar that enables users to navigate and view metrics with ease.
         </li>
         <li>
-          In-depth involvement with the OS by working on QNX and Android Debug
-          Bridge (adb).
+          Implemented complex state management solutions for Bookmarking and Theme persistence utilizing Zustand and the React Context API.
+        </li>
+        <li>
+          Worked with advanced components such as Datagrids and Datepickers in MUI X to develop fullstack implementations for Global Metric and Performance Targets dashboards integrated with SWR caching strategies, CGI Scripts, and MySQL scripting to connect with the backend database.
         </li>
       </ul>
     ),
@@ -48,15 +49,17 @@ const milestones = [
       <ul text-align="left">
         <li>
           Setup the First installation of Ford&lsquo;s latest in-development
-          infotainment system in the Performance Lab.
+          infotainment system in the Performance Lab to be demoed to the Chief Connected Vehicle Software Officer at Ford.
         </li>
         <li>
-          Developing key KPIs for identifying performance bottlenecks utilizing
-          OOPs, internal APIs and Slash in Python within an Agile framework.
+          Responsible for solely developing key KPIs for a new ECU to identify performance bottlenecks utilizing OOP practices, internal APIs and Slash in Python within an Agile framework. 
+        </li>
+        <li>
+          Lead tri-weekly standup meetings with the Performance team to notify metrics, regressions, as well as blockers for the ECU that I was managing.
         </li>
         <li>
           In-depth involvement with the OS by working on QNX and Android Debug
-          Bridge (adb).
+          Bridge (adb) as well as setting up VMs on Linux machines.
         </li>
         <li>
           Received outstanding reviews from both my supervisor,{" "}
@@ -88,14 +91,20 @@ const Timeline = () => {
   return (
     <VStack
       maxWidth="7xl"
-      w={{ base: "85vw", xl: "80vw", "2xl": "65vw"}}
+      w={{ base: "85vw", xl: "80vw", "2xl": "65vw" }}
       gap={0}
       mt={50}
     >
       <HStack justifyContent={"left"} w="100%">
-        <Icon color="exhibit.300" as={TbWorldHeart} fontSize={[25, 35]}/>
+        <Icon color="exhibit.300" as={TbWorldHeart} fontSize={[25, 35]} />
         <br />
-        <Text color="exhibit.300" fontWeight="extrabold" fontSize={["2xl", "4xl"]}>Experiences</Text>
+        <Text
+          color="exhibit.300"
+          fontWeight="extrabold"
+          fontSize={["2xl", "4xl"]}
+        >
+          Experiences
+        </Text>
       </HStack>
 
       {milestones.map((milestone, index) => (
@@ -129,7 +138,7 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
       borderTop="8px"
       borderColor="exhibit.300"
       gap={1}
-      ml={{"2xl": 12}}
+      ml={{ "2xl": 12 }}
     >
       <Icon
         as={icon}
@@ -138,7 +147,13 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
         color="white"
       />
       <Box>
-        <VStack spacing={2} mb={3} textAlign="left" color={"black"} mr={{"2xl": 10}}>
+        <VStack
+          spacing={2}
+          mb={3}
+          textAlign="left"
+          color={"black"}
+          mr={{ "2xl": 10 }}
+        >
           <Text
             fontSize={["sm", "lg"]}
             color="exhibit.300"
@@ -148,7 +163,13 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             {date}
           </Text>
-          <chakra.h1 fontSize={["md", "2xl"]} lineHeight={1.2} fontWeight="bold" color="white" w="100%">
+          <chakra.h1
+            fontSize={["md", "2xl"]}
+            lineHeight={1.2}
+            fontWeight="bold"
+            color="white"
+            w="100%"
+          >
             {title}
           </chakra.h1>
           <Text
@@ -160,7 +181,14 @@ const Card = ({ title, description, icon, date, location }: CardProps) => {
           >
             <em>{location}</em>
           </Text>
-          <Text as={"div"} fontSize={["xs", "md"]} w="90%" textAlign="left" ml={5} color="white">
+          <Text
+            as={"div"}
+            fontSize={["xs", "md"]}
+            w="90%"
+            textAlign="left"
+            ml={5}
+            color="white"
+          >
             {description}
           </Text>
         </VStack>
