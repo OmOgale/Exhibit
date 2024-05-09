@@ -3,7 +3,16 @@ import { Providers } from '../providers'
 import { fonts } from '../fonts'
 import PageWrapper from '@/components/PageWrapper'
 import { Metadata } from 'next'
+import { HeaderLink } from '@/components/PageWrapper'
+import { RiArticleLine } from "react-icons/ri";
 
+const headerLists: Array<HeaderLink> = [
+  {
+    url: "/blog",
+    icon: <RiArticleLine />,
+    name: "Blog",
+  }
+]
 export default function RootLayout({
   children,
 }: {
@@ -13,7 +22,7 @@ export default function RootLayout({
     <html lang='en' className={fonts.rubik.variable}>
       <body>
         <Providers>
-          <PageWrapper>
+          <PageWrapper headerLists={headerLists}>
             {children}
           </PageWrapper>
         </Providers>

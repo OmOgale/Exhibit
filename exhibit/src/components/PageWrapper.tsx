@@ -21,10 +21,16 @@ import { ReactNode } from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
-import { RiArticleLine } from "react-icons/ri";
 import { IoCall } from "react-icons/io5";
+import { ReactElement, JSXElementConstructor } from "react";
 
-const Header = () => {
+export type HeaderLink = {
+  url: string;
+  icon: ReactElement<any, string | JSXElementConstructor<any>> | undefined;
+  name: string;
+};
+
+const Header = ({ headerLists }: { headerLists: Array<HeaderLink> }) => {
   const bg = "white";
   const mobileNav = useDisclosure();
   return (
@@ -62,28 +68,20 @@ const Header = () => {
                 md: "inline-flex",
               }}
             >
-              <Link as={NextLink} href="/blog">
-                <Button
-                  variant="ghost"
-                  color="black"
-                  _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
-                  aria-label="blog"
-                  leftIcon={<RiArticleLine />}
-                >
-                  Blog
-                </Button>
-              </Link>
-              {/* <Link as={NextLink} href="/projects">
-                <Button
-                  variant="ghost"
-                  color="black"
-                  _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
-                  aria-label="projects"
-                  leftIcon={<FaRegFileCode />}
-                >
-                  Projects
-                </Button>
-              </Link> */}
+              {headerLists.map((headerLink, _) => (
+                <Link key={headerLink.url} as={NextLink} href={headerLink.url}>
+                  <Button
+                    variant="ghost"
+                    color="black"
+                    _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                    aria-label={headerLink.name}
+                    leftIcon={headerLink.icon}
+                  >
+                    {headerLink.name.charAt(0).toUpperCase() +
+                      headerLink.name.slice(1)}
+                  </Button>
+                </Link>
+              ))}
             </HStack>
             <Box
               display={{
@@ -124,18 +122,24 @@ const Header = () => {
                   aria-label="Close menu"
                   onClick={mobileNav.onClose}
                 />
-                <Link as={NextLink} href="/blog">
-                  <Button
-                    w="full"
-                    variant="ghost"
-                    color="black"
-                    _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
-                    aria-label="blog"
-                    leftIcon={<RiArticleLine />}
+                {headerLists.map((headerLink, _) => (
+                  <Link
+                    key={headerLink.url}
+                    as={NextLink}
+                    href={headerLink.url}
                   >
-                    Blog
-                  </Button>
-                </Link>
+                    <Button
+                      variant="ghost"
+                      color="black"
+                      _hover={{ backgroundColor: "exhibit.300", opacity: 0.8 }}
+                      aria-label={headerLink.name}
+                      leftIcon={headerLink.icon}
+                    >
+                      {headerLink.name.charAt(0).toUpperCase() +
+                        headerLink.name.slice(1)}
+                    </Button>
+                  </Link>
+                ))}
                 {/* <Link as={NextLink} href="/projects">
                   <Button
                     w="full"
@@ -157,13 +161,13 @@ const Header = () => {
   );
 };
 
-const Footer = () => {
+const Footer = ({ pgColor }: { pgColor: string }) => {
   const year = new Date().getFullYear();
 
   return (
     <Flex
       w="full"
-      bg="#4b3f43"
+      bg={pgColor}
       p={15}
       alignItems="center"
       justifyContent="center"
@@ -249,13 +253,21 @@ const Footer = () => {
   );
 };
 
-const PageWrapper = ({ children }: { children: ReactNode }) => {
+const PageWrapper = ({
+  children,
+  pgColor,
+  headerLists,
+}: {
+  children: ReactNode;
+  pgColor?: string;
+  headerLists: Array<HeaderLink>;
+}) => {
   return (
     <>
       <Stack gap={0} justifyContent="center">
-        <Header />
+        <Header headerLists={headerLists} />
         {children}
-        <Footer />
+        <Footer pgColor={pgColor ?? "#4b3f43"} />
       </Stack>
     </>
   );

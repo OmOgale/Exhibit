@@ -1,15 +1,12 @@
 "use client";
-import { Stack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Overview } from "@/components/Overview";
 import Timeline from "@/components/Timeline";
 import Name from "@/components/Name";
 import Projects from "@/components/projects/Projects";
 import {
-  Link,
-  Button,
   Element,
   Events,
-  animateScroll as scroll,
   scrollSpy,
 } from "react-scroll";
 import { useEffect } from "react";
@@ -34,7 +31,7 @@ const Introduction = () => {
 
   return (
     <>
-      <Stack ml={{ base: "5vw", "2xl": 300 }} mt={100} display="flex">
+      <Flex ml={{ base: "5vw", "2xl": 250 }} flexDirection={"column"} mt={100}>
         <Name />
         <Overview projects={"projects"} experiences={"experiences"} milestones={"milestones"}/>
         <Element name="experiences" className="element">
@@ -46,7 +43,7 @@ const Introduction = () => {
         <Element name="milestones" className="element">
           <Milestones />
         </Element>
-      </Stack>
+      </Flex>
     </>
   );
 };

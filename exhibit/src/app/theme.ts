@@ -13,6 +13,9 @@ export const customTheme = extendTheme({
         100: baseTheme.colors.white,
         200: "#4b3f43",
         300: "#d98aa2",
+        400: "#92cfb3",
+        500: "#779573",
+        600: "#c3f2bd",
       }
     }
 },

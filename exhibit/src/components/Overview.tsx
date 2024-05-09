@@ -13,7 +13,7 @@ import { TbWorldHeart } from "react-icons/tb";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { FaCodeBranch } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { PiLightbulbBold } from "react-icons/pi";
 import { MdAttachEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
@@ -21,7 +21,7 @@ import { Link as ScrollLink } from "react-scroll";
 import NextLink from "next/link";
 
 // @ts-ignore
-const Feature = (props) => {
+export const Feature = (props) => {
   return (
     <Flex alignItems={"top"}>
       <Flex shrink={0}>
@@ -107,7 +107,6 @@ export const Overview = ({
       alignItems="center"
       borderRadius={{base: 30, sm: 50}}
       mr={100}
-      // TODO: this was unset before for xl. Try to fix if can.
       w={{ base: "90vw", xl: "unset" }}
     >
       <Box py={12} bg="white" rounded="xl">
@@ -173,6 +172,19 @@ export const Overview = ({
                   stroke="currentColor"
                   aria-hidden="true"
                   as={FaLinkedin}
+                  _hover={{ color: "exhibit.300" }}
+                />
+              </Link>
+              <Link
+                target="_blank"
+                href="https://github.com/OmOgale"
+                aria-label="GitHub"
+              >
+                <Icon
+                  boxSize={6}
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  as={FaGithub}
                   _hover={{ color: "exhibit.300" }}
                 />
               </Link>
@@ -294,7 +306,7 @@ export const Overview = ({
                 title="Resume"
                 icon={ImProfile}
                 href={
-                  "https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing"
+                  "https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
                 }
                 _self={false}
               >
@@ -303,7 +315,7 @@ export const Overview = ({
                 <Link
                   color="exhibit.300"
                   target="_blank"
-                  href="https://drive.google.com/file/d/1WHRjIFG-Zhwcfk7w0_8YuQNea7IvoPKS/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
                 >
                   Resume.pdf
                 </Link>
