@@ -5,6 +5,7 @@ import PageWrapper from '@/components/PageWrapper'
 import { Metadata } from 'next'
 import { HeaderLink } from '@/components/PageWrapper'
 import { RiArticleLine } from "react-icons/ri";
+import { Analytics } from "@vercel/analytics/react";
 
 const headerLists: Array<HeaderLink> = [
   {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Providers>
           <PageWrapper headerLists={headerLists}>
             {children}
+            <Analytics mode={"production"}/>
           </PageWrapper>
         </Providers>
       </body>

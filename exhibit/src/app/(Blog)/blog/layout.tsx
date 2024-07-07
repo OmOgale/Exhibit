@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import { FiHome } from "react-icons/fi";
 import { HeaderLink } from "@/components/PageWrapper";
 import { RiArticleLine } from "react-icons/ri";
+import { Analytics } from "@vercel/analytics/react";
 
 const headerLists: Array<HeaderLink> = [
   {
@@ -15,24 +16,6 @@ const headerLists: Array<HeaderLink> = [
   },
 ];
 
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="en" className={fonts.rubik.variable}>
-//       <body>
-//         <Providers>
-//           <PageWrapper pgColor={"#779573"} headerLists={headerLists}>
-//             {children}
-//           </PageWrapper>
-//         </Providers>
-//       </body>
-//     </html>
-//   );
-// }
-
 export default function RootLayout({
   children,
 }: {
@@ -40,8 +23,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fonts.rubik.variable}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
+        ></link>
+      </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <PageWrapper pgColor={"#779573"} headerLists={headerLists}>
+            {children}
+            <Analytics mode={"production"}/>
+          </PageWrapper>
+        </Providers>
       </body>
     </html>
   );

@@ -1,22 +1,7 @@
-// import {
-//   Box,
-//   Button,
-//   Center,
-//   FormControl,
-//   FormHelperText,
-//   FormLabel,
-//   Heading,
-// } from "@chakra-ui/react";
-// import * as React from "react";
-// import {
-//   AutoComplete,
-//   AutoCompleteInput,
-//   AutoCompleteItem,
-//   AutoCompleteList,
-//   AutoCompleteGroup,
-// } from "@choc-ui/chakra-autocomplete";
-// import { useForm } from "react-hook-form";
 import { SearchIcon } from "@chakra-ui/icons";
+import useSWR from "swr";
+import { debounce, set } from "lodash";
+
 import {
   InputGroup,
   InputLeftElement,
@@ -34,16 +19,28 @@ import {
   UseCheckboxProps,
   UseCheckboxReturn,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { BoxGeometry } from "three/src/Three.js";
+import { use, useEffect, useState } from "react";
+import { BACKEND_URL } from "@/utils/constants";
+import axios from "axios";
+import { usePostsStore } from "@/utils/postsStore";
+import { stat } from "fs";
+import { BlogPostData } from "@/utils/types";
 
-interface CustomCheckboxProps extends CheckboxProps {
-}
+interface CustomCheckboxProps extends CheckboxProps {}
 
-function Example() {
+const Tags = () => {
+  const tagsFetcher = async (url: string) => {
+    const categories = await axios.get(url);
+    return categories.data;
+  };
   function CustomCheckbox(props: CustomCheckboxProps) {
-    const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps }: UseCheckboxReturn =
-      useCheckbox(props as UseCheckboxProps);
+    const {
+      state,
+      getCheckboxProps,
+      getInputProps,
+      getLabelProps,
+      htmlProps,
+    }: UseCheckboxReturn = useCheckbox(props as UseCheckboxProps);
 
     return (
       <chakra.label
@@ -55,7 +52,7 @@ function Example() {
         background="rgba(255, 255, 255, 0.1)"
         backdropFilter="blur(2px)"
         _hover={{
-          background: "rgba(255, 255, 255, 0.2)", 
+          background: "rgba(255, 255, 255, 0.2)",
           backdropFilter: "blur(4px)",
         }}
         rounded="lg"
@@ -83,75 +80,99 @@ function Example() {
     );
   }
 
-  const { value, getCheckboxProps } = useCheckboxGroup({
-    defaultValue: ["Poems", "Articles"],
+  const { value: selectedTags, getCheckboxProps } = useCheckboxGroup({
+    defaultValue: [],
   });
+
+  // const posts = usePostsStore((state) => state.posts);
+  const setPosts = usePostsStore((state) => state.setPosts);
+  const initialPosts = usePostsStore((state) => state.initialPosts);
+  const searchedPosts = usePostsStore((state) => state.searchedPosts);
+  const searchQuery = usePostsStore((state) => state.searchQuery);
+
+  const haveCommonElement = (arr1: string[], arr2: string[]) => {
+    const set1 = new Set(arr1);
+    return arr2.some((tag) => set1.has(tag));
+  };
+
+  useEffect(() => {
+    const isSearchQuery = searchQuery.length > 0;
+    if (selectedTags.length > 0) {
+      const newPosts = isSearchQuery
+        ? searchedPosts.filter((post) =>
+            // @ts-ignore
+            haveCommonElement(post.tags, selectedTags)
+          )
+        : initialPosts.filter((post) =>
+            // @ts-ignore
+            haveCommonElement(post.tags, selectedTags)
+          );
+      setPosts(newPosts);
+    } else if (selectedTags.length === 0) {
+      isSearchQuery ? setPosts(searchedPosts) : setPosts(initialPosts);
+    }
+  }, [selectedTags, initialPosts, searchedPosts, searchQuery]);
+
+  const {
+    data: categories,
+    error,
+    isLoading,
+  } = useSWR<string[]>(`${BACKEND_URL}/blog-posts/tags`, tagsFetcher, {
+    revalidateOnFocus: false,
+  });
+
+  if (isLoading || error) <></>;
+
+  if (!categories) return <></>;
 
   return (
     <Stack direction={"row"} mt={5}>
-      {/* <Text>The selected checkboxes are: {value.sort().join(" and ")}</Text> */}
-      <CustomCheckbox {...getCheckboxProps({ value: "Poems" })} />
-      <CustomCheckbox {...getCheckboxProps({ value: "Articles" })} />
+      {categories.map((category) => {
+        return (
+          <CustomCheckbox
+            key={category}
+            {...getCheckboxProps({ value: category })}
+          />
+        );
+      })}
     </Stack>
   );
-}
-
-// const SearchBar = () => {
-//   const { register, setValue, watch, handleSubmit } = useForm({
-//     defaultValues: { team: "one" },
-//   });
-
-//   const value = watch("team");
-
-//   const { onBlur, name } = register("team");
-//   const onSubmit = data => console.log("data from form", data);
-
-//   return (
-//     <Box border="1px" borderRadius="1em" p={2}>
-//       <Button onClick={() => setValue("team", "four")}>
-//         Change Value To four
-//       </Button>
-//       <form onSubmit={handleSubmit(onSubmit)}>
-//         <FormControl>
-//           <FormLabel>Olympics Soccer Winner</FormLabel>
-//           <AutoComplete
-//             onChange={val => setValue("team", val)}
-//             openOnFocus
-//             rollNavigation
-//             listAllValuesOnFocus
-//             freeSolo
-//             value={value}
-//           >
-//             <AutoCompleteInput variant="filled" name={name} onBlur={onBlur} />
-//             <AutoCompleteList>
-//               <AutoCompleteGroup>
-//                 {options.map(option => (
-//                   <AutoCompleteItem
-//                     key={`option-${option.value}`}
-//                     value={{
-//                       title: `${option.value}`,
-//                     }}
-//                     label={option.label}
-//                     textTransform="capitalize"
-//                   />
-//                 ))}
-//               </AutoCompleteGroup>
-//             </AutoCompleteList>
-//           </AutoComplete>
-//           <FormHelperText>Who do you support.</FormHelperText>
-//         </FormControl>
-//         <Center>
-//           <Button type="submit">Submit</Button>
-//         </Center>
-//       </form>
-//     </Box>
-//   );
-// }
+};
 
 const SearchBar = () => {
-  const [value, setValue] = useState<string>("");
+  const postsToDisplay = usePostsStore((state) => state.initialPosts);
+  const setPosts = usePostsStore((state) => state.setPosts);
+  const setSearchedPosts = usePostsStore((state) => state.setSearchedPosts);
+  const searchedPosts = usePostsStore((state) => state.searchedPosts);
+  const setSearchQuery = usePostsStore((state) => state.setSearchQuery);
+  const searchQuery = usePostsStore((state) => state.searchQuery);
+
+  useEffect(() => {
+    const uuidPosts = new Set(postsToDisplay.map((post) => post.uuid));
+    const debounced = debounce(async () => {
+      const searchReq = await axios.get(
+        `${BACKEND_URL}/blog-posts/search?searchTerm=${searchQuery}`
+      );
+
+      const searchedPosts: BlogPostData[] = searchReq.data ?? [];
+      const filteredPosts = searchedPosts.filter((post) =>
+        uuidPosts.has(post.uuid)
+      );
+
+      // We want to maintain the searchedPosts order but need the posts from postsToDisplay.
+      const newPosts = filteredPosts.map((post) =>
+        postsToDisplay.find((initialPost) => initialPost.uuid === post.uuid)
+      );
+
+      setSearchedPosts(newPosts as BlogPostData[]);
+    }, 300);
+
+    if (searchQuery.length > 0) debounced();
+    else if (searchQuery.length === 0) setPosts(postsToDisplay);
+  }, [searchQuery, setSearchedPosts, postsToDisplay]);
+
   return (
-    <Flex direction={"column"} maxW={["unset", "50vw"]}>
+    <Flex direction={"column"} maxW={{ lg: "50vw" }}>
       <InputGroup size="lg">
         <InputLeftElement
           pointerEvents="none"
@@ -163,7 +184,7 @@ const SearchBar = () => {
         <Input
           type="text"
           placeholder="Search for a blog post..."
-          _placeholder={{ color: "gray.300"}}
+          _placeholder={{ color: "gray.300" }}
           size="lg"
           focusBorderColor="exhibit.300"
           borderColor="exhibit.600"
@@ -171,11 +192,11 @@ const SearchBar = () => {
             borderColor: "exhibit.300",
           }}
           borderWidth={2}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </InputGroup>
-      <Example />
+      <Tags />
     </Flex>
   );
 };

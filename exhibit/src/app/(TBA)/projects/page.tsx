@@ -26,7 +26,6 @@ export default function ToBeAdded() {
                     <Text>TBA</Text>
                 </Box>
                 <Text fontWeight={"bold"}>(To be added..)</Text>
-                <Text fontWeight={"extrabold"}>{color}</Text>
                 <Link href="/"><Text fontWeight={"bold"}><em>Back to Home &rarr;</em></Text></Link>
             </VStack>
         </Hero>
