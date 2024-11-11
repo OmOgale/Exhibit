@@ -145,7 +145,7 @@ export const Overview = ({
               }}
               color="gray.500"
             >
-              A junior (3A) studying Computer Science (Honours Co-op) at the{" "}
+              A junior (3A) studying Computer Science (Honours Co-op) with AI specialization at the{" "}
               <Link target="_blank" href="https://uwaterloo.ca/">
                 University of Waterloo.
               </Link>{" "}
