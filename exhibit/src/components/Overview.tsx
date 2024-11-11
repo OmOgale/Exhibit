@@ -15,6 +15,7 @@ import { ImProfile } from "react-icons/im";
 import { FaCodeBranch } from "react-icons/fa";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { PiLightbulbBold } from "react-icons/pi";
+import { CgCommunity } from "react-icons/cg";
 import { MdAttachEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { Link as ScrollLink } from "react-scroll";
@@ -45,7 +46,7 @@ export const Feature = (props) => {
                 _hover={{ color: "exhibit.300", cursor: "pointer" }}
               />
             </ScrollLink>
-          ) : (
+          ) : props.href ? (
             <Link
               target={props._self ? "_self" : "_blank"}
               href={props.href}
@@ -60,6 +61,15 @@ export const Feature = (props) => {
                 _hover={{ color: "exhibit.300" }}
               />
             </Link>
+          ): (
+            <Icon
+            boxSize={6}
+            stroke="currentColor"
+            aria-hidden="true"
+            as={props.icon}
+            mb={5}
+            _hover={{ color: "exhibit.300" }}
+            />
           )}
         </Flex>
       </Flex>
@@ -254,9 +264,12 @@ export const Overview = ({
               <Feature title="Experiences" icon={TbWorldHeart} to={experiences}>
                 I have had extensive hands-on experience 📈 with scalable microservices, full-stack web
                 development as well as embedded hardware systems and Test-Driven Development (TDD) with E2E integration and unit testing
-                through my past experiences. I am a Software Executive at GDSC and a 
-                Software Dev at UW&apos;s CS Club. I have also lead my team at hackathons such as
+                through my past experiences. I have also lead my team at hackathons such as
                 HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! On the side, I love public speaking and debating. 🎤
+              </Feature>
+              <Feature title="Community" icon={CgCommunity} _self={false}>
+                I am a Software Executive at UWaterloo's Google Student Developer Club 🚀 +
+                Software Developer for the annual CS Class Profile at UW&apos;s Computer Science Club. 🖌️
               </Feature>
 
               <Feature title="Projects" icon={FaCodeBranch} to={projects}>
