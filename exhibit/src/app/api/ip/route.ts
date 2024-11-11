@@ -11,9 +11,9 @@ const ip = req.ip ?? '127.0.0.1';
 return NextResponse.json(`${ip}`)
 }
 
-export default function handler(req: NextRequest) {
-    if (req.method === 'GET') {
-      return GET(req);
-    }
-    return new Response('Method Not Allowed', { status: 405 });
-  }
+// export default function handler(req: NextRequest) {
+//     if (req.method === 'GET') {
+//       return GET(req);
+//     }
+//     return new Response('Method Not Allowed', { status: 405 });
+//   }
