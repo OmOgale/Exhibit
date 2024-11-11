@@ -255,7 +255,7 @@ export const Overview = ({
                 I have had extensive hands-on experience 📈 with scalable microservices, full-stack web
                 development as well as embedded hardware systems and Test-Driven Development (TDD) with E2E integration and unit testing
                 through my past experiences. I am a Software Executive at GDSC and a 
-                Software Dev at UW's CS Club. I have also lead my team at hackathons such as
+                Software Dev at UW&apos;s CS Club. I have also lead my team at hackathons such as
                 HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! On the side, I love public speaking and debating. 🎤
               </Feature>
 
