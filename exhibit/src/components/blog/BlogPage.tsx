@@ -45,8 +45,9 @@ const BlogHeader = ({ post }: { post: BlogPostData }) => {
   } = useSWR<any>( `${BACKEND_URL}/users/${currentIP}/${currentUUID}`, likesFetcher, {
   });
 
-  console.log(userLikes)
-  console.log(`${BACKEND_URL}/users/${currentIP}/${currentUUID}`)
+  // console.log(userLikes)
+  // console.log(`${BACKEND_URL}/users/${currentIP}/${currentUUID}`)
+  
   return (
     <Flex
       width="full"

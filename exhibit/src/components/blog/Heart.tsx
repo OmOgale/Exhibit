@@ -12,7 +12,7 @@ function randomNumber(min: number, max: number) {
 }
 
 function Heart({likes, userLikes}: { likes?: number, userLikes?: number}) {
-  console.log(userLikes)
+  // console.log(userLikes)
   const [floatingHearts, setFloatingHearts] = useState<JSX.Element[]>([]);
   const [clicked, setClicked] = useState(typeof userLikes != "undefined" ? userLikes > 0 : false);
   const userLikesDefined = useRef(false);

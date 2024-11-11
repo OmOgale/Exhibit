@@ -190,10 +190,6 @@ const Post = ({
   );
 };
 
-type UUIDMap = {
-  [uuid: string]: string
-}
-
 const Posts = () => {
   const {
     data: posts,
@@ -209,10 +205,8 @@ const Posts = () => {
   
   useEffect(() => {
     if (!isLoading && posts) {
-      setPostsToDisplay(posts)
-      setInitialPosts(posts)
-      const uuidMap = new Map<string, string>();
-      posts.forEach((post) => uuidMap.set(post.title, post.uuid));
+      setPostsToDisplay(posts.filter((post) => post.published))
+      setInitialPosts(posts.filter((post) => post.published))
   }}, [isLoading, posts])
 
   const resultsLength = postsToDisplay?.length ?? -1;

@@ -2,14 +2,63 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import { ReactNode, useEffect, useState, FC } from "react";
-import { Box, Stack, Flex, Tag } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
+
 import rehypeHighlight from "rehype-highlight";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { usePostsStore } from "@/utils/postsStore";
 
+// const Poem = ({ children }: { children: any}) => {
+//   return (
+//     <Box
+//       border="5px solid"
+//       borderColor={"exhibit.300"}
+//       bg={"exhibit.500"}
+//       fontStyle="italic"
+//       p={3}
+//       gap={0}
+//       lineHeight="1.6"
+//       my={4}
+//     >
+//       {children.replace(/\\n/g, '\n').split('\n').map((line: any, index: any) => (
+//         <Text key={index} my={1}>
+//           {line}
+//         </Text>
+//       ))}
+//     </Box>
+//   );
+// };
+
+const Poem = ({ children }: { children: string }) => {
+  return (
+    <Box
+      border="5px solid"
+      borderColor={"exhibit.300"} 
+      bg={"#FDF6E3"}            
+      fontStyle="italic"
+      p={3}
+      gap={0}
+      lineHeight="1.6"
+      my={4}
+      color={"exhibit.500"}
+      fontFamily="'Source Sans Pro', sans-serif"
+    >
+      {children.replace(/\\n/g, '\n').split('\n').map((line, index) => (
+        <Text key={index} my={1}>
+          {line}
+        </Text>
+      ))}
+    </Box>
+  );
+};
+
+
+export default Poem;
+
+
 const Example = ({ fontSize }: { fontSize: string }) => {
-  return <Box fontSize={fontSize}>My name is Rohit</Box>;
+  return <Box fontSize={fontSize}>My name is Om</Box>;
 };
 
 // const FunContent = () => {
@@ -45,22 +94,15 @@ const CodeTile = ({ lang, children }: { lang: string, children: ReactNode }) => 
       p={3}
       gap={0}
     >
-      {/* <Box
-        bg="white"
-        color="white"
-        fontSize="sm"
-      >
-        {"pythondad"}
-      </Box> */}
       <SyntaxHighlighter
         language={lang}
         style={solarizedlight}
         showLineNumbers={true}
       >{children as string}</SyntaxHighlighter>
-    </Stack>
+    </Stack> 
   );
 };
-const componentsGlobal = { Example, CodeTile };
+const componentsGlobal = { Example, CodeTile, Poem };
 
 // { components }: { content: string, components?: { [key: string]: FC }  }
 
@@ -68,36 +110,36 @@ export const ParsedPostContent = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState<any>(true);
   const content = usePostsStore((state) => state.currentPostContent);
-  const mdxString = `some *mdx* <code>content</code>: \n<Example fontSize={["20px", "34px"]} /> \n <CodeTile lang="jsx">// jsx \n const Hello = () => &#123;'Hi'&#125; \n const bye = 2 \n &#x3C;Model /&#x3E; </CodeTile> \n
-  <CodeTile lang="python">// python \n num = 2 \n sum = 2 + num</CodeTile>
-Two 🍰 is: {Math.PI * 2} \n
-<h1>Hi</h1>
-\`\`\`python
-// app/page.tsx
-# hi
-print("Hello World")
-<Box>
-  Hi Rahul
-</Box>
-\`\`\`
-\`\`\`c++
-int main() {
-  cout << "Hello World";
-  return 0;
-}
-\`\`\`
-efsdjfngg
-ajnsgdnfs
+//   const mdxString = `some *mdx* <code>content</code>: \n<Example fontSize={["20px", "34px"]} /> \n <CodeTile lang="jsx">// jsx \n const Hello = () => &#123;'Hi'&#125; \n const bye = 2 \n &#x3C;Model /&#x3E; </CodeTile> \n
+//   <CodeTile lang="python">// python \n num = 2 \n sum = 2 + num</CodeTile>
+// Two 🍰 is: {Math.PI * 2} \n
+// <h1>Hi</h1>
+// \`\`\`python
+// // app/page.tsx
+// # hi
+// print("Hello World")
+// <Box>
+//   Hi Rahul
+// </Box>
+// \`\`\`
+// \`\`\`c++
+// int main() {
+//   cout << "Hello World";
+//   return 0;
+// }
+// \`\`\`
+// efsdjfngg
+// ajnsgdnfs
 
-asgdjsdgjnsd
+// asgdjsdgjnsd
 
-safjndgng
+// safjndgng
 
 
-asfgjninfd
+// asfgjninfd
 
-gaedjdnjg
-`;
+// gaedjdnjg
+// `;
 
   // Use mdxString in your MDX component
   const mdxSource = useEffect(() => {
@@ -123,7 +165,6 @@ gaedjdnjg
       fontSize={{ base: "sm", md: "lg", lg: "xl" }}
     >
       <MDXRemote {...data} components={componentsGlobal} />
-      {/* <FunContent /> */}
     </Box>
   );
 };
