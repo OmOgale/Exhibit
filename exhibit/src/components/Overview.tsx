@@ -145,11 +145,12 @@ export const Overview = ({
               }}
               color="gray.500"
             >
-              A sophomore (2B) studying Computer Science (Honours Co-op) at the{" "}
+              A junior (3A) studying Computer Science (Honours Co-op) at the{" "}
               <Link target="_blank" href="https://uwaterloo.ca/">
                 University of Waterloo.
               </Link>{" "}
-              👨‍💻
+              👨‍💻<br />
+              Looking for Spring 2025 internships!
             </chakra.p>
             <HStack
               maxW="2xl"
@@ -251,18 +252,17 @@ export const Overview = ({
               }}
             >
               <Feature title="Experiences" icon={TbWorldHeart} to={experiences}>
-                I have had extensive hands-on experience 📈 with full-stack web
-                development as well as embedded hardware systems and testing
-                through my past experiences. Lead my team at hackathons such as
-                HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! I have
-                also held leadership positions in debating. 🎤
+                I have had extensive hands-on experience 📈 with scalable microservices, full-stack web
+                development as well as embedded hardware systems and Test-Driven Development (TDD) with E2E integration and unit testing
+                through my past experiences. I am a Software Executive at GDSC and a 
+                Software Dev at UW's CS Club. I have also lead my team at hackathons such as
+                HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! On the side, I love public speaking and debating. 🎤
               </Feature>
 
               <Feature title="Projects" icon={FaCodeBranch} to={projects}>
                 Focused on spearheading projects with real-world usecases ❤️.
                 Have developed projects in multiple stacks including full-stack
-                development with the MERN stack as well as alternate frameworks
-                such as Flask. I also have fun in designing optimized pure C++
+                development with the MERN stack. I also have fun in designing optimized pure C++
                 and Python projects.
               </Feature>
 
@@ -273,13 +273,15 @@ export const Overview = ({
                 _self={false}
               >
                 <Text fontWeight={"semibold"}>Languages:</Text>
-                <Text>TypeScript, Python, C++, C, SQL, Racket</Text>
-                <Text fontWeight={"semibold"}>Tools, Frameworks and APIs:</Text>
+                <Text>Java, TypeScript, C++, Python, C, SQL, JavaScript, Bash, Racket, HTML/CSS</Text>
+                <Text fontWeight={"semibold"}>Frameworks and Technologies:</Text>
                 <Text>
-                  ReactJS, Node.js, Express.js, Next.js, Chakra UI, Material UI,
-                  HTML5, CSS, Flask, Recharts, Google Charts, Docker, MongoDB,
-                  Git, Bash, Vercel, Android Debug Bridge, QNX, Agile, Jira,
-                  Slash, VS Code, LaTeX, WordPress, Office 365
+                Spring Boot, JUnit, Next.js, React, MongoDB, MySQL, PostgreSQL, Node.js, Express.js, Flask, jQuery
+                </Text>
+                <Text fontWeight={"semibold"}>Developer Tools:</Text>
+                <Text>
+                Google Cloud Platform (GCP), Git, Docker, Datadog, Terraform, Kubernetes, Tekton, Jenkins, Visual Studio Code,
+                IntelliJ IDEA, Agile, Jira, Slash, Vercel
                 </Text>
               </Feature>
 
@@ -290,7 +292,7 @@ export const Overview = ({
                 _self={true}
               >
                 I love writing stuff about touching topics and, unsurprisingly
-                tech! 😅 Feel free to go through some of my articles and poetry.
+                tech! 😅 Why don&apos;t ya have a look? Feel free to go through some of my articles and poetry.
                 ✍️
               </Feature>
 
@@ -310,7 +312,7 @@ export const Overview = ({
                 }
                 _self={false}
               >
-                Looking for internships for Fall 2024! 🚀 Feel free to peruse my
+                Looking for internships for Spring 2025! 🚀 Feel free to peruse my
                 resume and reach out to me for any opportunities. {"\n"}{" "}
                 <Link
                   color="exhibit.300"

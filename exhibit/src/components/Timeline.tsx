@@ -18,6 +18,29 @@ import { TbWorldHeart } from "react-icons/tb";
 const milestones = [
   {
     id: 1,
+    title: "Software Engineer @ Ford Pro",
+    icon: SiFord,
+    description: (
+      <ul text-align="left">
+        <li>
+          Architected the high-throughput, microservices-based new vehicle enrollment flow, optimizing scalability to handle 5M+ annual transactions.
+        </li>
+        <li>
+        Engineered event-driven microservices in Java and Kotlin with Spring Boot, using GCP Cloud Functions triggered by Pub/Sub for real-time message delivery while implementing a TDD-first approach with JUnit and Mockito for thorough E2E integration and unit testing.
+        </li>
+        <li>
+          Independently streamlined the codebase by creating a new utilites library for DTO&apos;s and generics. 
+        </li>
+        <li>
+        Led pipeline deployments with Tekton and infrastructure automation using Terraform for robust provisioning and cluster management.
+        </li>
+      </ul>
+    ),
+    date: "SEPTEMBER 9, 2024 - PRESENT",
+    location: "Dearborn, MI (Remote)",
+  },
+  {
+    id: 2,
     title: "Software Developer @ Ford",
     icon: SiFord,
     description: (
@@ -42,7 +65,7 @@ const milestones = [
     location: "Oakville, ON",
   },
   {
-    id: 2,
+    id: 3,
     title: "System Software Developer @ Ford",
     icon: SiFord,
     description: (

@@ -8,7 +8,7 @@ import { MdOutlineSchool } from "react-icons/md";
 export const repositoriesList = [
   {
     title: "Om's Exhibit",
-    description: "My portfolio website which is a showcase of my projects, skills and experiences. I also have a blog in-progress where I plan to jot down my thoughts!",
+    description: "My portfolio website which is a showcase of my projects, skills and experiences. Checkout my blog where I jot down my thoughts! I am actively adding new articles and poems!",
     languages: ['TypeScript', 'ReactJS', 'ChakraUI', 'Vercel'],
     tools: ['Nextjs', 'react', 'chakraUi'],
     icon: CgProfile,

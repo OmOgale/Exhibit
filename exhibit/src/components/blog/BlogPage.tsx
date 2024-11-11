@@ -41,7 +41,7 @@ const BlogHeader = ({ post }: { post: BlogPostData }) => {
   const {
     data: userLikes,
     error: userLikesError,
-    isLoading: userLikesIsLoading,
+    isLoading: userLikesIsLoading, 
   } = useSWR<number>( `${BACKEND_URL}/users/${currentIP}/${currentUUID}`, likesFetcher, {
   });
 
