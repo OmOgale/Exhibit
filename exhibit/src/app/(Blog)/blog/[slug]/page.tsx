@@ -21,6 +21,7 @@ export default function Page({params }: { params : { slug: string }}) {
     const fetchIP = async () => {
       const response = await fetch('/api/ip/');
       const data = await response.json();
+      console.log(data)
       setCurrentIP(data);
     };
 
