@@ -7,7 +7,7 @@ type ResponseData = {
 export async function GET(
   req: NextRequest,
 ) {
-const ip = req.ip ?? '127.0.0.1';
+const ip = req.headers.get('x-forwarded-for') || req.ip || '127.0.0.1';
 return NextResponse.json(`${ip}`)
 }
 
