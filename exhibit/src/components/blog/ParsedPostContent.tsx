@@ -145,7 +145,7 @@ export const ParsedPostContent = () => {
   const mdxSource = useEffect(() => {
     serialize(content, {
       mdxOptions: {
-        development: true,
+        development: false,
         remarkPlugins: [],
         // @ts-ignore
         rehypePlugins: [rehypeHighlight],
