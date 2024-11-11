@@ -268,8 +268,8 @@ export const Overview = ({
                 HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! On the side, I love public speaking and debating. 🎤
               </Feature>
               <Feature title="Community" icon={CgCommunity} _self={false}>
-                I am a Software Executive at UWaterloo's Google Student Developer Club 🚀 +
-                Software Developer for the annual CS Class Profile at UW&apos;s Computer Science Club. 🖌️
+                I am a Software Executive at UWaterloo&apos;s <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://gdg.community.dev/gdg-on-campus-university-of-waterloo-waterloo-canada/"}>Google Student Developer Club</Link> 🚀 +
+                Software Developer for the annual <Link as={NextLink} sx={{textDecoration: "underline"}} _hover={{ color: "exhibit.300" }} href={"https://csclub.uwaterloo.ca/classprofile/"}>CS Class Profile</Link> at UW&apos;s Computer Science Club. 🖌️
               </Feature>
 
               <Feature title="Projects" icon={FaCodeBranch} to={projects}>
