@@ -40,10 +40,12 @@ const BlogHeader = ({ post }: { post: BlogPostData }) => {
   
   const {
     data: userLikes,
-    error,
-    isLoading,
-  } = useSWR<any>( `${BACKEND_URL}/users/${currentIP}/${currentUUID}`, likesFetcher, {
+    error: userLikesError,
+    isLoading: userLikesIsLoading,
+  } = useSWR<number>( `${BACKEND_URL}/users/${currentIP}/${currentUUID}`, likesFetcher, {
   });
+
+  if (likesLoading || userLikesIsLoading || likesError || userLikesError) return <></>;
 
   // console.log(userLikes)
   // console.log(`${BACKEND_URL}/users/${currentIP}/${currentUUID}`)
