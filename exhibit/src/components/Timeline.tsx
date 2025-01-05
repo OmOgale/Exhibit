@@ -29,6 +29,9 @@ const milestones = [
         Engineered event-driven microservices in Java and Kotlin with Spring Boot, using GCP Cloud Functions triggered by Pub/Sub for real-time message delivery while implementing a TDD-first approach with JUnit and Mockito for thorough E2E integration and unit testing.
         </li>
         <li>
+        Developed an E2E LLM Service with an interactive dashboard that helps automate the creation of Jira tickets to supercharge the team&apos;s sprints.
+        </li>
+        <li>
           Independently streamlined the codebase by creating a new utilities library for DTO&apos;s and generics. 
         </li>
         <li>
