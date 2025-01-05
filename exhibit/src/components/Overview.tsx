@@ -321,7 +321,7 @@ export const Overview = ({
                 title="Resume"
                 icon={ImProfile}
                 href={
-                  "https://drive.google.com/file/d/16wyuYDmvjAkyUxSI3ldkZRsAS8wWdX7C/view?usp=sharing"
+                  "https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
                 }
                 _self={false}
               >
@@ -330,7 +330,7 @@ export const Overview = ({
                 <Link
                   color="exhibit.300"
                   target="_blank"
-                  href="https://drive.google.com/file/d/16wyuYDmvjAkyUxSI3ldkZRsAS8wWdX7C/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
                 >
                   Resume.pdf
                 </Link>
