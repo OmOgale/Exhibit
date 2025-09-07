@@ -14,36 +14,75 @@ import {
 import { IconType } from "react-icons";
 import { SiFord } from "react-icons/si";
 import { TbWorldHeart } from "react-icons/tb";
+import { CartaIcon } from "../icons/CartaIcon";
+import type { IconProps } from "@chakra-ui/react";
 
 const milestones = [
-  {
+    {
     id: 1,
+    title: "Software Engineer @ Carta",
+    icon: CartaIcon,
+    description: (
+      <ul text-align="left">
+        <li>
+          Powered the launch of Automated Money Movement for Distributions, reducing manual treasury work across 700+ firms improving
+          auto-reconciliation from 68% to over 99%, supporting lump-sum wires &gt; $100M.
+        </li>
+        <li>
+          Spearheaded Eligibility Checks from 0{"->"}1 to surface expense routing, saving over 600+ hours annually in manual triaging.
+        </li>
+        <li>
+          Resolved critical concurrency bugs and implemented distributed locking for end-to-end IMAD/OMAD integration.
+        </li>
+        <li>
+          Built an AI Wire Spreadsheet Extractor, leveraging agentic flows to populate wire instructions from unstructured documents, cutting
+          5000+ hours of manual work.
+        </li>
+        <li>
+          Bootstrapped a custom API Client for new payment rails service and streamlined integrations across Carta's Payments ecosystem.
+        </li>
+      </ul>
+    ),
+    date: "MAY 8, 2025 - AUGUST 22, 2025",
+    location: "Waterloo, ON",
+  },
+  {
+    id: 2,
     title: "Software Engineer @ Ford Pro",
     icon: SiFord,
     description: (
       <ul text-align="left">
         <li>
-          Architected the high-throughput, microservices-based new vehicle enrollment flow, optimizing scalability to handle 5M+ annual transactions.
+          Architected the high-throughput, microservices-based new vehicle
+          enrollment flow, optimizing scalability to handle 5M+ annual
+          transactions.
         </li>
         <li>
-        Engineered event-driven microservices in Java and Kotlin with Spring Boot, using GCP Cloud Functions triggered by Pub/Sub for real-time message delivery while implementing a TDD-first approach with JUnit and Mockito for thorough E2E integration and unit testing.
+          Engineered event-driven microservices in Java and Kotlin with Spring
+          Boot, using GCP Cloud Functions triggered by Pub/Sub for real-time
+          message delivery while implementing a TDD-first approach with JUnit
+          and Mockito for thorough E2E integration and unit testing.
         </li>
         <li>
-        Developed an E2E LLM Service with an interactive dashboard that helps automate the creation of Jira tickets to supercharge the team&apos;s sprints.
+          Developed an E2E LLM Service with an interactive dashboard that helps
+          automate the creation of Jira tickets to supercharge the team&apos;s
+          sprints.
         </li>
         <li>
-          Independently streamlined the codebase by creating a new utilities library for DTO&apos;s and generics. 
+          Independently streamlined the codebase by creating a new utilities
+          library for DTO&apos;s and generics.
         </li>
         <li>
-        Led pipeline deployments with Tekton and infrastructure automation using Terraform for robust provisioning and cluster management.
+          Led pipeline deployments with Tekton and infrastructure automation
+          using Terraform for robust provisioning and cluster management.
         </li>
       </ul>
     ),
-    date: "SEPTEMBER 9, 2024 - PRESENT",
+    date: "SEPTEMBER 9, 2024 - DECEMBER 13, 2024",
     location: "Dearborn, MI (Remote)",
   },
   {
-    id: 2,
+    id: 3,
     title: "Software Developer @ Ford",
     icon: SiFord,
     description: (
@@ -54,13 +93,20 @@ const milestones = [
           breakdowns by utilizing APIs such as Recharts and Google Charts.
         </li>
         <li>
-          Devised an entirely new frontend for representing metrics for an ECU (Electronic Control Unit) using Material UI as well as internal Ford APIs. Ideated global UI features such as an intricate collapsing sidebar that enables users to navigate and view metrics with ease.
+          Devised an entirely new frontend for representing metrics for an ECU
+          (Electronic Control Unit) using Material UI as well as internal Ford
+          APIs. Ideated global UI features such as an intricate collapsing
+          sidebar that enables users to navigate and view metrics with ease.
         </li>
         <li>
-          Implemented complex state management solutions for Bookmarking and Theme persistence utilizing Zustand and the React Context API.
+          Implemented complex state management solutions for Bookmarking and
+          Theme persistence utilizing Zustand and the React Context API.
         </li>
         <li>
-          Worked with advanced components such as Datagrids and Datepickers in MUI X to develop fullstack implementations for Global Metric and Performance Targets dashboards integrated with SWR caching strategies, CGI Scripts, and MySQL scripting to connect with the backend database.
+          Worked with advanced components such as Datagrids and Datepickers in
+          MUI X to develop fullstack implementations for Global Metric and
+          Performance Targets dashboards integrated with SWR caching strategies,
+          CGI Scripts, and MySQL scripting to connect with the backend database.
         </li>
       </ul>
     ),
@@ -68,20 +114,25 @@ const milestones = [
     location: "Oakville, ON",
   },
   {
-    id: 3,
+    id: 4,
     title: "System Software Developer @ Ford",
     icon: SiFord,
     description: (
       <ul text-align="left">
         <li>
           Setup the First installation of Ford&lsquo;s latest in-development
-          infotainment system in the Performance Lab to be demoed to the Chief Connected Vehicle Software Officer at Ford.
+          infotainment system in the Performance Lab to be demoed to the Chief
+          Connected Vehicle Software Officer at Ford.
         </li>
         <li>
-          Responsible for solely developing key KPIs for a new ECU to identify performance bottlenecks utilizing OOP practices, internal APIs and Slash in Python within an Agile framework. 
+          Responsible for solely developing key KPIs for a new ECU to identify
+          performance bottlenecks utilizing OOP practices, internal APIs and
+          Slash in Python within an Agile framework.
         </li>
         <li>
-          Lead tri-weekly standup meetings with the Performance team to notify metrics, regressions, as well as blockers for the ECU that I was managing.
+          Lead tri-weekly standup meetings with the Performance team to notify
+          metrics, regressions, as well as blockers for the ECU that I was
+          managing.
         </li>
         <li>
           In-depth involvement with the OS by working on QNX and Android Debug
@@ -146,7 +197,7 @@ const Timeline = () => {
 interface CardProps {
   title: string;
   description: ReactNode;
-  icon: IconType;
+  icon: IconType | ((props: IconProps) => JSX.Element);
   date: string;
   location: string;
 }
