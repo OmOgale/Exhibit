@@ -103,7 +103,9 @@ const RepositoryCard = (props: RepositoryCardProps) => {
                     <Tag
                       key={lang}
                       size={["sm", "md"]}
-                      colorScheme="cyan"
+                      // colorScheme="cyan"
+                      bg="white"
+                      color="exhibit.300"
                       borderRadius="full"
                       flex="auto"
                       justifyContent="center"
