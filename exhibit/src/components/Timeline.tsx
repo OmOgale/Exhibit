@@ -39,7 +39,7 @@ const milestones = [
           5000+ hours of manual work.
         </li>
         <li>
-          Bootstrapped a custom API Client for new payment rails service and streamlined integrations across Carta's Payments ecosystem.
+          Bootstrapped a custom API Client for new payment rails service and streamlined integrations across Carta&lsquo;s Payments ecosystem.
         </li>
       </ul>
     ),
