@@ -160,7 +160,7 @@ export const Overview = ({
                 University of Waterloo.
               </Link>{" "}
               👨‍💻<br />
-              Looking for Summer 2025 internships!
+              Looking for Winter 2026 and Summer 2026 internships!
             </chakra.p>
             <HStack
               maxW="2xl"
