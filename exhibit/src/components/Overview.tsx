@@ -268,7 +268,8 @@ export const Overview = ({
                 HTN @ UWaterloo, DELTAHACKS @ McMaster, McHacks @ McGill! On the side, I love public speaking and debating. 🎤
               </Feature>
               <Feature title="Community" icon={CgCommunity} _self={false}>
-                I am a Software Executive @ UWaterloo&apos;s <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://gdg.community.dev/gdg-on-campus-university-of-waterloo-waterloo-canada/"}>Google Student Developer Club</Link> 🚀 +
+                I am a Project Lead @ <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://uwblueprint.org/"}>UW Blueprint</Link> leading a Discord integration for <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://www.bobatalks.com/"}>BobaTalks</Link> 🧋, a student career community of over 13K members.
+                Previously, I was a Software Executive @ UWaterloo&apos;s <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://gdg.community.dev/gdg-on-campus-university-of-waterloo-waterloo-canada/"}>Google Student Developer Club</Link> 🚀 +
                 Project Developer for <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://marillacplace.ca/"}>Marillac Place</Link> 🏡, a women&apos;s shelter, that serves pregnant and parenting women in need @ <Link as={NextLink} sx={{textDecoration: "underline" }} _hover={{ color: "exhibit.300" }} href={"https://uwblueprint.org/"}>UW Blueprint</Link> 🤝 +
                 Software Developer for the annual <Link as={NextLink} sx={{textDecoration: "underline"}} _hover={{ color: "exhibit.300" }} href={"https://csclub.uwaterloo.ca/classprofile/"}>CS Class Profile</Link> @ UW&apos;s Computer Science Club. 🖌️
               </Feature>
@@ -322,7 +323,7 @@ export const Overview = ({
                 title="Resume"
                 icon={ImProfile}
                 href={
-                  "https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
+                  "https://drive.google.com/file/d/16wyuYDmvjAkyUxSI3ldkZRsAS8wWdX7C/view?usp=sharing"
                 }
                 _self={false}
               >
@@ -331,7 +332,7 @@ export const Overview = ({
                 <Link
                   color="exhibit.300"
                   target="_blank"
-                  href="https://drive.google.com/file/d/1_xPWEeODgEChL-c-6RmAVOEGJnklgcma/view?usp=sharing"
+                  href="https://drive.google.com/file/d/16wyuYDmvjAkyUxSI3ldkZRsAS8wWdX7C/view?usp=sharing"
                 >
                   Resume.pdf
                 </Link>

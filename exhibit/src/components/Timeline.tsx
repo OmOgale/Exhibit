@@ -120,7 +120,7 @@ const milestones = [
     description: (
       <ul text-align="left">
         <li>
-          Setup the First installation of Ford&lsquo;s latest in-development
+          Setup the First installation of Ford&apos;s latest in-development
           infotainment system in the Performance Lab to be demoed to the Chief
           Connected Vehicle Software Officer at Ford.
         </li>
