@@ -16,30 +16,37 @@ import { SiFord } from "react-icons/si";
 import { TbWorldHeart } from "react-icons/tb";
 import { CartaIcon } from "../icons/CartaIcon";
 import type { IconProps } from "@chakra-ui/react";
+import { FordProIcon } from "@/icons/FordProIcon";
 
 const milestones = [
-    {
+  {
     id: 1,
     title: "Backend Software Engineer @ Carta",
     icon: CartaIcon,
     description: (
       <ul text-align="left">
         <li>
-          Powered the launch of Automated Money Movement for Distributions, reducing manual treasury work across 700+ firms improving
-          auto-reconciliation from 68% to over 99%, supporting lump-sum wires &gt; $100M.
+          Powered the launch of Automated Money Movement for Distributions,
+          reducing manual treasury work across 700+ firms improving
+          auto-reconciliation from 68% to over 99%, supporting lump-sum wires
+          &gt; $100M.
         </li>
         <li>
-          Spearheaded Eligibility Checks from 0{"->"}1 to surface expense routing, saving over 600+ hours annually in manual triaging.
+          Spearheaded Eligibility Checks from 0{"->"}1 to surface expense
+          routing, saving over 600+ hours annually in manual triaging.
         </li>
         <li>
-          Resolved critical concurrency bugs and implemented distributed locking for end-to-end IMAD/OMAD integration.
+          Resolved critical concurrency bugs and implemented distributed locking
+          for end-to-end IMAD/OMAD integration.
         </li>
         <li>
-          Built an AI Wire Spreadsheet Extractor, leveraging agentic flows to populate wire instructions from unstructured documents, cutting
-          5000+ hours of manual work.
+          Built an AI Wire Spreadsheet Extractor, leveraging agentic flows to
+          populate wire instructions from unstructured documents, cutting 5000+
+          hours of manual work.
         </li>
         <li>
-          Bootstrapped a custom API Client for new payment rails service and streamlined integrations across Carta&lsquo;s Payments ecosystem.
+          Bootstrapped a custom API Client for new payment rails service and
+          streamlined integrations across Carta&lsquo;s Payments ecosystem.
         </li>
       </ul>
     ),
@@ -49,7 +56,7 @@ const milestones = [
   {
     id: 2,
     title: "Software Engineer @ Ford Pro",
-    icon: SiFord,
+    icon: FordProIcon,
     description: (
       <ul text-align="left">
         <li>
