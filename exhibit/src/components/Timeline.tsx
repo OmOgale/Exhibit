@@ -20,7 +20,7 @@ import type { IconProps } from "@chakra-ui/react";
 const milestones = [
     {
     id: 1,
-    title: "Software Engineer @ Carta",
+    title: "Backend Software Engineer @ Carta",
     icon: CartaIcon,
     description: (
       <ul text-align="left">
