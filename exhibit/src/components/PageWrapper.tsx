@@ -16,7 +16,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { ReactNode } from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
@@ -172,81 +172,113 @@ const Footer = ({ pgColor }: { pgColor: string }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Flex
-        w="full"
-        as="footer"
-        flexDir={{
-          base: "column",
-          sm: "row",
-        }}
-        align="center"
-        justify="space-between"
-        px="6"
-        py="4"
-        bg="white"
-      >
-        <chakra.p
-          py={{
-            base: "2",
-            sm: "0",
-          }}
-          color="gray.800"
+      <Flex w="full" as="footer" px="6" py="4" bg="white">
+        <Flex
+          w="full"
+          align="center"
+          flexDir={{ base: "column", md: "row" }}
+          gap={{ base: 3, md: 0 }}
         >
-          All rights reserved &copy; {year}
-        </chakra.p>
-
-        <Flex mx="-2" display="flex" alignItems="center">
-          <chakra.a
-            target="_blank"
-            href="mailto:oogale@uwaterloo.ca"
-            mx="2"
-            color="gray.600"
-            _hover={{
-              color: "gray.500",
-            }}
-            aria-label="Email"
+          <chakra.p
+            flex={1}
+            textAlign={{ base: "center", md: "left" }}
+            py="0"
+            color="gray.800"
           >
-            <MdAttachEmail size={"25"} />
-          </chakra.a>
+            All rights reserved &copy; {year}
+          </chakra.p>
 
-          <chakra.a
-            target="_blank"
-            href="tel:+15489949110"
-            mx="2"
-            color="gray.600"
-            _hover={{
-              color: "gray.500",
-            }}
-            aria-label="Phone"
+          <Flex
+            flex={1}
+            align="center"
+            justify="center"
+            gap="3"
           >
-            <IoCall size={"25"} />
-          </chakra.a>
+            <chakra.a
+              href="https://cs.uwatering.com/#https://omogale.vercel.app?nav=prev"
+              aria-label="Previous site in CS Webring"
+            >
+              <ArrowLeftIcon boxSize={3} />
+            </chakra.a>
 
-          <chakra.a
-            target="_blank"
-            href="https://ca.linkedin.com/in/om-ogale"
-            mx="2"
-            color="gray.600"
-            _hover={{
-              color: "gray.500",
-            }}
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin size={"25"} />
-          </chakra.a>
+            <Box
+              as="a"
+              href="https://cs.uwatering.com/#https://omogale.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              w="32px"
+              h="32px"
+              borderRadius="full"
+            >
+              <Image
+                src="https://cs.uwatering.com/icon.black.svg"
+                alt="CS Webring"
+                boxSize="20px"
+                opacity={0.8}
+              />
+            </Box>
 
-          <chakra.a
-            target="_blank"
-            href="https://github.com/OmOgale"
-            mx="2"
-            color="gray.600"
-            _hover={{
-              color: "gray.500",
-            }}
-            aria-label="Github"
+            <chakra.a
+              href="https://cs.uwatering.com/#https://omogale.vercel.app?nav=next"
+              aria-label="Next site in CS Webring"
+            >
+              <ArrowRightIcon boxSize={3} />
+            </chakra.a>
+          </Flex>
+
+          <Flex
+            flex={1}
+            justify={{ base: "center", md: "flex-end" }}
+            align="center"
+            mx="-2"
           >
-            <FaGithub size={"25"} />
-          </chakra.a>
+            <chakra.a
+              target="_blank"
+              href="mailto:oogale@uwaterloo.ca"
+              mx="2"
+              color="gray.600"
+              _hover={{ color: "gray.500" }}
+              aria-label="Email"
+            >
+              <MdAttachEmail size={"25"} />
+            </chakra.a>
+
+            <chakra.a
+              target="_blank"
+              href="tel:+15489949110"
+              mx="2"
+              color="gray.600"
+              _hover={{ color: "gray.500" }}
+              aria-label="Phone"
+            >
+              <IoCall size={"25"} />
+            </chakra.a>
+
+            <chakra.a
+              target="_blank"
+              href="https://ca.linkedin.com/in/om-ogale"
+              mx="2"
+              color="gray.600"
+              _hover={{ color: "gray.500" }}
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={"25"} />
+            </chakra.a>
+
+            <chakra.a
+              target="_blank"
+              href="https://github.com/OmOgale"
+              mx="2"
+              color="gray.600"
+              _hover={{ color: "gray.500" }}
+              aria-label="Github"
+            >
+              <FaGithub size={"25"} />
+            </chakra.a>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
