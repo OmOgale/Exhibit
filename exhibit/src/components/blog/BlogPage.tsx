@@ -78,7 +78,7 @@ const BlogHeader = ({ post }: { post: BlogPostData }) => {
           </Text>
         </Stack>
       </Stack>
-      {/* <Heart likes={likes} userLikes={userLikes}/> */}
+      <Heart likes={likes} userLikes={userLikes}/>
     </Flex>
   );
 };
