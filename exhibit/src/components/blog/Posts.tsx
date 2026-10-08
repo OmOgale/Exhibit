@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { BlogPostData } from "@/utils/types";
 import { BACKEND_URL } from "@/utils/constants";
 import { blogsFetcher } from "@/utils/methods";
-import { usePostsStore } from "@/utils/postsStore";
+import { usePostsStore, useVisiblePosts } from "@/utils/postsStore";
 import styles from "./blog.module.css";
 
 const Post = ({ article }: { article: BlogPostData }) => (
@@ -25,18 +25,15 @@ const Posts = () => {
     blogsFetcher,
     { revalidateOnFocus: false }
   );
-  const postsToDisplay = usePostsStore((state) => state.posts);
-  const setPostsToDisplay = usePostsStore((state) => state.setPosts);
-  const setInitialPosts = usePostsStore((state) => state.setInitialPosts);
-  const initialPosts = usePostsStore((state) => state.initialPosts);
-  const searchQuery = usePostsStore((state) => state.searchQuery);
+  const setPosts = usePostsStore((state) => state.setPosts);
+  const allPosts = usePostsStore((state) => state.posts);
+  const searchFailed = usePostsStore((state) => state.searchFailed);
+  const filtering = usePostsStore((state) => state.searchQuery.trim().length > 0 || state.selectedTags.length > 0);
+  const postsToDisplay = useVisiblePosts();
 
   useEffect(() => {
-    if (!posts) return;
-    const published = posts.filter((post) => post.published);
-    setPostsToDisplay(published);
-    setInitialPosts(published);
-  }, [posts, setPostsToDisplay, setInitialPosts]);
+    if (posts) setPosts(posts.filter((post) => post.published));
+  }, [posts, setPosts]);
 
   if (error) {
     return (
@@ -47,15 +44,15 @@ const Posts = () => {
   }
   if (isLoading) return <p className={styles.status}>Loading posts…</p>;
 
-  const filtered = postsToDisplay.length !== initialPosts.length || searchQuery.length > 0;
-
   return (
     <>
-      {filtered && (
+      {filtering && (
         <p className={styles.status} aria-live="polite">
-          {postsToDisplay.length === 0
-            ? "No posts match. Try another word or clear the tags."
-            : `${postsToDisplay.length} of ${initialPosts.length} posts`}
+          {searchFailed
+            ? "Search isn’t working right now. Try again in a minute."
+            : postsToDisplay.length === 0
+              ? "No posts match. Try another word or clear the tags."
+              : `${postsToDisplay.length} of ${allPosts.length} posts`}
         </p>
       )}
       <ul className={styles.posts}>

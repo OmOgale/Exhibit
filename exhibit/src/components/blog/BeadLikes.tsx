@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { usePostsStore } from "@/utils/postsStore";
-import { likesHandler } from "@/utils/methods";
 import home from "@/components/home/home.module.css";
 import styles from "./blog.module.css";
 
-// A rod tops out at 9 (the 5-bead plus all four 1-beads), so that's each reader's limit.
+// A rod tops out at 9 (the 5-bead plus all four 1-beads), so that's each reader's limit. The backend enforces it too.
 const MAX_LIKES_PER_READER = 9;
 
 // One soroban rod, scaled down: a heaven bead worth 5 above the beam, four earth beads worth 1 below.
@@ -27,9 +25,7 @@ function bead(y: number) {
 }
 
 // Likes for a post, counted on an abacus rod. Each reader can like a post up to 9 times.
-export default function BeadLikes({ likes = 0, userLikes = 0 }: { likes?: number; userLikes?: number }) {
-  const currentIP = usePostsStore((state) => state.currentIP);
-  const currentUUID = usePostsStore((state) => state.currentUUID);
+export default function BeadLikes({ uuid, likes = 0, userLikes = 0 }: { uuid: string; likes?: number; userLikes?: number }) {
   const [total, setTotal] = useState(Number(likes));
   const [mine, setMine] = useState(Number(userLikes));
   const synced = useRef(false);
@@ -44,11 +40,21 @@ export default function BeadLikes({ likes = 0, userLikes = 0 }: { likes?: number
 
   const maxed = mine >= MAX_LIKES_PER_READER;
 
-  const like = () => {
+  const like = async () => {
     if (maxed) return;
-    likesHandler(currentIP, currentUUID);
-    setMine(mine + 1);
-    setTotal(total + 1);
+    // Move the bead straight away, then settle on what the server says.
+    setMine((m) => m + 1);
+    setTotal((t) => t + 1);
+    try {
+      const res = await fetch(`/api/likes/${encodeURIComponent(uuid)}`, { method: "POST" });
+      if (res.ok) return;
+      setTotal((t) => t - 1);
+      // 409: this reader was already at the limit (say, from another tab), so show a full rod.
+      setMine((m) => (res.status === 409 ? MAX_LIKES_PER_READER : m - 1));
+    } catch {
+      setMine((m) => m - 1);
+      setTotal((t) => t - 1);
+    }
   };
 
   const five = mine >= 5;

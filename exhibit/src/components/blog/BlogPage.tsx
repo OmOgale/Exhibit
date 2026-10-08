@@ -1,41 +1,30 @@
 "use client";
 
-import { useEffect } from "react";
 import useSWR from "swr";
+import axios from "axios";
 import BeadLikes from "./BeadLikes";
 import { ParsedPostContent } from "./ParsedPostContent";
-import { usePostsStore } from "@/utils/postsStore";
 import { blogsFetcher, likesFetcher } from "@/utils/methods";
 import { BACKEND_URL } from "@/utils/constants";
 import { BlogPostData } from "@/utils/types";
 import styles from "./blog.module.css";
 
 const Likes = ({ uuid }: { uuid: string }) => {
-  const currentIP = usePostsStore((state) => state.currentIP);
-  const { data: likes, isLoading: likesLoading } = useSWR<number>(
-    `${BACKEND_URL}/blog-posts/likes/${uuid}`,
-    likesFetcher,
-    { revalidateOnFocus: false }
-  );
-  const { data: userLikes, isLoading: userLikesLoading } = useSWR<number>(
-    currentIP ? `${BACKEND_URL}/users/${currentIP}/${uuid}` : null,
-    likesFetcher
-  );
+  const { data } = useSWR<{ total: number; mine: number }>(`/api/likes/${encodeURIComponent(uuid)}`, likesFetcher, {
+    revalidateOnFocus: false,
+  });
 
-  if (likesLoading || userLikesLoading || !currentIP) return null;
-  return <BeadLikes likes={likes} userLikes={userLikes} />;
+  if (!data) return null;
+  return <BeadLikes uuid={uuid} likes={data.total} userLikes={data.mine} />;
 };
 
 const BlogPage = ({ slug }: { slug: string }) => {
   const { data: post, error, isLoading } = useSWR<BlogPostData>(`${BACKEND_URL}/blog-posts/${slug}`, blogsFetcher, {
     revalidateOnFocus: false,
   });
-  const setCurrentUUID = usePostsStore((state) => state.setCurrentUUID);
-
-  useEffect(() => {
-    if (post) setCurrentUUID(post.uuid);
-  }, [post, setCurrentUUID]);
-
+  if (axios.isAxiosError(error) && error.response?.status === 404) {
+    return <p className={styles.status}>There’s no post here. It may have moved or been taken down.</p>;
+  }
   if (error) {
     return (
       <p className={styles.status}>
