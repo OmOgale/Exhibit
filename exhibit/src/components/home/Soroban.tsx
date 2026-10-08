@@ -74,10 +74,21 @@ export default function Soroban({ value, caption: fixedCaption }: { value?: stri
 
   useEffect(() => {
     if (value) return;
-    const tick = () => setTime(waterlooTime());
+    // Tick on each minute boundary, rescheduling every time so the clock never drifts.
+    let id: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      setTime(waterlooTime());
+      clearTimeout(id);
+      id = setTimeout(tick, 60_000 - (Date.now() % 60_000) + 50);
+    };
+    // Background tabs throttle timers, so catch up as soon as the page is visible again.
+    const onVisible = () => document.visibilityState === "visible" && tick();
     tick();
-    const id = setInterval(tick, 15_000);
-    return () => clearInterval(id);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      clearTimeout(id);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [value]);
 
   useEffect(() => {
