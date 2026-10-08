@@ -53,7 +53,6 @@ const work = [
 
 const community = [
   { org: "UW Blueprint", what: "Project lead on a Discord integration for BobaTalks (13K+ members); before that, built tools for Marillac Place and Extend-A-Family." },
-  { org: "WATonomous", what: "Autonomous software engineer." },
   { org: "Google Developer Group", what: "Software executive, built auth for GDG's monorepo." },
   { org: "UW Computer Science Club", what: "Built the CS class profile, visualizing the graduating class’s journeys." },
   { org: "Hack the North and Hack Canada", what: "Hackathon judge." },
@@ -89,11 +88,11 @@ export default function Home() {
 
         <section className={styles.prose}>
           <p>
-            I like building at the intersection of AI and infrastructure, most
+            I like building at the intersection of ML, infrastructure, and distributed systems, most
             recently at GPTZero. Previously worked on fullstack and systems at Carta and Ford.
           </p>
           <p>
-            At GPTZero I led our investigations initiative into LLM hallucinations, primarily the investigations into{" "}
+            At GPTZero I led our investigations initiative into LLM hallucinations, primarily into{" "}
             <a href="https://www.ft.com/content/a61cbcae-95e4-4449-86e1-ef40fb306f4e">EY</a>,{" "}
             <a href="https://www.ft.com/content/b3828e92-4961-4b39-84f0-c42f33be3c3f">KPMG</a>, and{" "}
             <a href="https://www.ft.com/content/7e149ac8-2ce2-4266-8940-192f9821b33c">PwC</a>. All three reached the front
@@ -107,7 +106,7 @@ export default function Home() {
 
         <section className={styles.section}>
           <h2>Work</h2>
-          <p className={styles.note}>An outstanding evaluation on five of my co-op terms.</p>
+          <p className={styles.note}>Rated Outstanding on five co-op terms.</p>
           <ul className={styles.work}>
             {work.map((item) => (
               <li key={item.company + item.dates}>
