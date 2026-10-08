@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import { debounce } from "lodash";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/utils/constants";
@@ -64,7 +63,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     const uuidPosts = new Set(postsToDisplay.map((post) => post.uuid));
-    const debounced = debounce(async () => {
+    const search = async () => {
       const searchReq = await axios.get(`${BACKEND_URL}/blog-posts/search?searchTerm=${searchQuery}`);
       const searchedPosts: BlogPostData[] = searchReq.data ?? [];
       // Keep the search ranking, but use the full post objects we already have.
@@ -72,11 +71,15 @@ const SearchBar = () => {
         .filter((post) => uuidPosts.has(post.uuid))
         .map((post) => postsToDisplay.find((initialPost) => initialPost.uuid === post.uuid));
       setSearchedPosts(newPosts as BlogPostData[]);
-    }, 300);
+    };
 
-    if (searchQuery.length > 0) debounced();
-    else setPosts(postsToDisplay);
-    return () => debounced.cancel();
+    if (searchQuery.length === 0) {
+      setPosts(postsToDisplay);
+      return;
+    }
+    // Wait for a pause in typing before searching.
+    const timer = setTimeout(search, 300);
+    return () => clearTimeout(timer);
   }, [searchQuery, setSearchedPosts, setPosts, postsToDisplay]);
 
   return (
