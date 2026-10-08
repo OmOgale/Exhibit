@@ -8,5 +8,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 export const metadata: Metadata = {
   title: "Om Ogale",
   description: "Software engineer and Computer Science student at the University of Waterloo.",
-  icons: "/om_photo.jpg",
 };

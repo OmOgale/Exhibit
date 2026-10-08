@@ -20,5 +20,4 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
 export const metadata: Metadata = {
   title: "Blog | Om Ogale",
   description: "Writing by Om Ogale.",
-  icons: "/om_photo.jpg",
 };

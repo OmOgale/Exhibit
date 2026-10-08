@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .rod { stroke: #4a3826; }
+    @media (prefers-color-scheme: dark) { .rod { stroke: #a08466; } }
+  </style>
+  <line x1="16" y1="1" x2="16" y2="31" stroke-width="2.5" class="rod"/>
+  <path d="M2 16 L9.5 8.5 H22.5 L30 16 L22.5 23.5 H9.5 Z" fill="#b47c22" stroke="#7d5414" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

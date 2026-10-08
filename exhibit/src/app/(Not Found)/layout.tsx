@@ -7,5 +7,4 @@ export default function NotFoundLayout({ children }: { children: React.ReactNode
 
 export const metadata: Metadata = {
   title: "Page not found | Om Ogale",
-  icons: "/om_photo.jpg",
 };

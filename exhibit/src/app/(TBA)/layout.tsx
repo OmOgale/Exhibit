@@ -13,5 +13,4 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
 export const metadata: Metadata = {
   title: "Projects | Om Ogale",
   description: "Things Om Ogale has built.",
-  icons: "/om_photo.jpg",
 };
