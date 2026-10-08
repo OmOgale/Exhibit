@@ -1,15 +1,9 @@
-import { Metadata } from "next";
+"use client";
+
 import BlogPage from "@/components/blog/BlogPage";
-import { SITE_NAME } from "@/utils/site";
 
-type Props = { params: { slug: string } };
-
-// Each post is its own page to search engines, not a copy of /blog.
-export function generateMetadata({ params }: Props): Metadata {
-  const path = `/blog/${params.slug}`;
-  return { alternates: { canonical: path }, openGraph: { siteName: SITE_NAME, url: path } };
-}
-
-export default function Page({ params }: Props) {
+// A client page: rendering the blog components from a server page fails on the server with "Element type is invalid".
+// The post's metadata lives in the sibling layout, since a client page can't export it.
+export default function Page({ params }: { params: { slug: string } }) {
   return <BlogPage slug={params.slug} />;
 }
