@@ -81,6 +81,8 @@ const EASTER_EGGS: Record<string, EasterEgg> = {
   },
   "0021": { text: "as in the 21st UCMAS International Abacus Competition, where I took first place." },
   "0923": { label: "September 23", text: "my birthday." },
+  "1111": { text: "make a wish." },
+  "2004": { text: "the year I was born." },
 };
 
 function easterEgg(rods: string): ReactNode {

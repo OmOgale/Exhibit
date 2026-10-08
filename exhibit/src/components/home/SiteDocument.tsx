@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { newsreader, themeScript } from "@/styles/site";
+import ConsoleGreeting from "./ConsoleGreeting";
 import "@/styles/theme.css";
 
 // The <html> shell shared by every route group's root layout.
@@ -14,6 +15,7 @@ export default function SiteDocument({ head, children }: { head?: React.ReactNod
       <body>
         {children}
         <Analytics mode={"production"} />
+        <ConsoleGreeting />
       </body>
     </html>
   );
