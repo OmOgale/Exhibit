@@ -73,7 +73,11 @@ export default function Home() {
         <header className={styles.header}>
           <div>
             <h1>Om Ogale</h1>
-            <p className={styles.tagline}>Senior at University of Waterloo studying Computer Science.</p>
+            <p className={styles.tagline}>
+              Senior at University of Waterloo studying Computer Science.
+              <br />
+              Looking for 2027 New Grad opportunities.
+            </p>
             <nav className={styles.links} aria-label="Elsewhere">
               {links.map((link) => (
                 <a key={link.label} href={link.href}>
