@@ -25,23 +25,27 @@ function bead(y: number) {
 }
 
 // Likes for a post, counted on an abacus rod. Each reader can like a post up to 9 times.
-export default function BeadLikes({ uuid, likes = 0, userLikes = 0 }: { uuid: string; likes?: number; userLikes?: number }) {
+// `userLikes` is undefined while this reader's count is still loading: the rod shows straight away, empty,
+// and its beads slide into place when the count arrives.
+export default function BeadLikes({ uuid, likes = 0, userLikes }: { uuid: string; likes?: number; userLikes?: number }) {
   const [total, setTotal] = useState(Number(likes));
-  const [mine, setMine] = useState(Number(userLikes));
-  const synced = useRef(false);
+  const [mine, setMine] = useState(Number(userLikes ?? 0));
+  const liked = useRef(false);
 
-  // The counts can arrive after the first render; adopt them once.
+  // Follow the counts as they load, until the reader starts liking; after that the local state is the truth.
   useEffect(() => {
-    if (synced.current) return;
+    if (liked.current) return;
     setTotal(Number(likes));
-    setMine(Number(userLikes));
-    synced.current = true;
+    setMine(Number(userLikes ?? 0));
   }, [likes, userLikes]);
 
+  const loading = userLikes === undefined;
   const maxed = mine >= MAX_LIKES_PER_READER;
 
   const like = async () => {
-    if (maxed) return;
+    // Until we know how many times this reader has liked, a like could overshoot the limit on screen.
+    if (maxed || loading) return;
+    liked.current = true;
     // Move the bead straight away, then settle on what the server says.
     setMine((m) => m + 1);
     setTotal((t) => t + 1);
@@ -64,10 +68,10 @@ export default function BeadLikes({ uuid, likes = 0, userLikes = 0 }: { uuid: st
       <button
         type="button"
         onClick={like}
-        aria-disabled={maxed}
+        aria-disabled={maxed || loading}
         aria-label={maxed ? `You’ve already liked this post ${MAX_LIKES_PER_READER} times` : "Like this post"}
         className={styles.rodButton}
-        title={maxed ? undefined : "Like"}
+        title={maxed || loading ? undefined : "Like"}
       >
         <svg viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
           <rect x="1.5" y="1.5" width={W - 3} height={H - 3} rx="4" className={home.frame} />

@@ -9,13 +9,13 @@ import { BACKEND_URL } from "@/utils/constants";
 import { BlogPostData } from "@/utils/types";
 import styles from "./blog.module.css";
 
-const Likes = ({ uuid }: { uuid: string }) => {
+// The post already carries its like total, so the rod renders with the post instead of waiting on this reader's count.
+const Likes = ({ uuid, total }: { uuid: string; total: number }) => {
   const { data } = useSWR<{ total: number; mine: number }>(`/api/likes/${encodeURIComponent(uuid)}`, likesFetcher, {
     revalidateOnFocus: false,
   });
 
-  if (!data) return null;
-  return <BeadLikes uuid={uuid} likes={data.total} userLikes={data.mine} />;
+  return <BeadLikes uuid={uuid} likes={data?.total ?? total} userLikes={data?.mine} />;
 };
 
 const BlogPage = ({ slug }: { slug: string }) => {
@@ -43,7 +43,7 @@ const BlogPage = ({ slug }: { slug: string }) => {
             {post.createdAt}, {post.readTime}, {post.views} views
           </p>
         </div>
-        <Likes uuid={post.uuid} />
+        <Likes uuid={post.uuid} total={post.likes} />
       </header>
       <ParsedPostContent content={post.content} />
     </article>
