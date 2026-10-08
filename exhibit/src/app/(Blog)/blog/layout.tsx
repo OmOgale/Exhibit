@@ -1,6 +1,6 @@
-import { Metadata } from "next";
 import SiteDocument from "@/components/home/SiteDocument";
 import PageShell from "@/components/home/PageShell";
+import { siteMetadata } from "@/utils/site";
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +17,8 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-export const metadata: Metadata = {
+export const metadata = siteMetadata({
   title: "Blog | Om Ogale",
   description: "Writing by Om Ogale.",
-};
+  path: "/blog",
+});

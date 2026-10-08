@@ -1,6 +1,6 @@
-import { Metadata } from "next";
 import SiteDocument from "@/components/home/SiteDocument";
 import PageShell from "@/components/home/PageShell";
+import { siteMetadata } from "@/utils/site";
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +10,8 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
   );
 }
 
-export const metadata: Metadata = {
+export const metadata = siteMetadata({
   title: "Projects | Om Ogale",
   description: "Things Om Ogale has built.",
-};
+  path: "/projects",
+});
