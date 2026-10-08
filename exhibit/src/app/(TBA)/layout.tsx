@@ -1,28 +1,17 @@
-// app/layout.tsx
-import { Providers } from '../providers'
-import { fonts } from '../fonts'
-import { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/react'
+import { Metadata } from "next";
+import SiteDocument from "@/components/home/SiteDocument";
+import PageShell from "@/components/home/PageShell";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode,
-}) {
+export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={fonts.rubik.variable}>
-      <body>
-        <Providers>
-          {children}
-          <Analytics mode={"production"}/>
-        </Providers>
-      </body>
-    </html>
-  )
+    <SiteDocument>
+      <PageShell section={{ label: "Projects", href: "/projects" }}>{children}</PageShell>
+    </SiteDocument>
+  );
 }
 
 export const metadata: Metadata = {
-  title: "Om's Exhibit",
-  description: "This is Om Bhushan Ogale's personal portfolio website.",
-  icons: "/om_photo.png",
-}
+  title: "Projects | Om Ogale",
+  description: "Things Om Ogale has built.",
+  icons: "/om_photo.jpg",
+};

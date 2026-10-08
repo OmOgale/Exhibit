@@ -1,0 +1,193 @@
+"use client";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import styles from "./home.module.css";
+
+// Geometry (SVG units). Each rod holds one heaven bead worth 5 and four earth beads worth 1.
+const BEAD_W = 46;
+const BEAD_H = 22;
+const TOP = 8;
+const BEAM_Y = 70;
+const BEAM_H = 8;
+const EARTH_Y = BEAM_Y + BEAM_H;
+const BOTTOM = EARTH_Y + BEAD_H * 5;
+const ROD_X = [44, 106, 186, 248]; // hours | minutes
+const WIDTH = 292;
+const HEAVEN_DROP = BEAM_Y - BEAD_H - TOP; // how far the heaven bead travels to touch the beam
+const DRAG_THRESHOLD = 3; // px of movement before a press counts as a drag, not a tap
+
+// A bead is either the rod's heaven bead or earth bead 0–3 (0 sits nearest the beam).
+type Bead = "heaven" | number;
+
+// The rod's value after the given bead is moved to sit near svg y.
+function valueAt(value: number, bead: Bead, y: number) {
+  const fives = value >= 5 ? 5 : 0;
+  const ones = value % 5;
+  if (bead === "heaven") {
+    const midpoint = TOP + BEAD_H / 2 + HEAVEN_DROP / 2;
+    return (y > midpoint ? 5 : 0) + ones;
+  }
+  const midpoint = EARTH_Y + (bead + 1) * BEAD_H;
+  // Pushing a bead up carries the beads above it; pulling it down carries the ones below.
+  return fives + (y < midpoint ? Math.max(ones, bead + 1) : Math.min(ones, bead));
+}
+
+// The rod's value after a tap on the given bead toggles it.
+function valueAfterTap(value: number, bead: Bead) {
+  const fives = value >= 5 ? 5 : 0;
+  const ones = value % 5;
+  if (bead === "heaven") return (fives ? 0 : 5) + ones;
+  return fives + (bead < ones ? bead : bead + 1);
+}
+const HEIGHT = BOTTOM + 8;
+
+function waterlooTime() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Toronto",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "00";
+  return get("hour") + get("minute");
+}
+
+function twelveHour(digits: string) {
+  const h = Number(digits.slice(0, 2));
+  const m = digits.slice(2);
+  return `${h % 12 || 12}:${m} ${h < 12 ? "am" : "pm"}`;
+}
+
+function beadPath(x: number, y: number) {
+  // A flattened hexagon, the double-cone profile of a soroban bead.
+  const l = x - BEAD_W / 2;
+  const r = x + BEAD_W / 2;
+  const m = y + BEAD_H / 2;
+  const i = 10;
+  return `M${l} ${m} L${l + i} ${y + 1} L${r - i} ${y + 1} L${r} ${m} L${r - i} ${y + BEAD_H - 1} L${l + i} ${y + BEAD_H - 1} Z`;
+}
+
+// With no props, shows the current Waterloo time. With `value` (four digits), shows that number instead.
+export default function Soroban({ value, caption: fixedCaption }: { value?: string; caption?: ReactNode }) {
+  const [time, setTime] = useState<string | null>(null);
+  const [digits, setDigits] = useState<number[]>([0, 0, 0, 0]);
+  const [touched, setTouched] = useState(false);
+
+  useEffect(() => {
+    if (value) return;
+    const tick = () => setTime(waterlooTime());
+    tick();
+    const id = setInterval(tick, 15_000);
+    return () => clearInterval(id);
+  }, [value]);
+
+  useEffect(() => {
+    const shown = value ?? time;
+    if (shown && !touched) setDigits(shown.split("").map(Number));
+  }, [value, time, touched]);
+
+  const svgRef = useRef<SVGSVGElement>(null);
+  const drag = useRef<{ rod: number; bead: Bead; startY: number; moved: boolean } | null>(null);
+
+  const updateRod = (rod: number, next: (value: number) => number) => {
+    const value = next(digits[rod]);
+    if (value === digits[rod]) return;
+    setTouched(true);
+    setDigits((d) => d.map((v, i) => (i === rod ? value : v)));
+  };
+
+  const toSvgY = (clientY: number) => {
+    const ctm = svgRef.current?.getScreenCTM();
+    return ctm ? (clientY - ctm.f) / ctm.d : 0;
+  };
+
+  const onPointerDown = (rod: number, bead: Bead) => (e: React.PointerEvent<SVGPathElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current = { rod, bead, startY: e.clientY, moved: false };
+  };
+
+  const onPointerMove = (e: React.PointerEvent<SVGPathElement>) => {
+    const d = drag.current;
+    if (!d) return;
+    if (!d.moved && Math.abs(e.clientY - d.startY) < DRAG_THRESHOLD) return;
+    d.moved = true;
+    const y = toSvgY(e.clientY);
+    updateRod(d.rod, (value) => valueAt(value, d.bead, y));
+  };
+
+  const onPointerUp = () => {
+    const d = drag.current;
+    drag.current = null;
+    if (d && !d.moved) updateRod(d.rod, (value) => valueAfterTap(value, d.bead));
+  };
+
+  const beadHandlers = (rod: number, bead: Bead) => ({
+    onPointerDown: onPointerDown(rod, bead),
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel: () => (drag.current = null),
+  });
+
+  const caption = touched
+    ? `The beads now read ${digits.join("")}.`
+    : value
+      ? fixedCaption
+      : !time
+        ? "Waterloo time, shown on an abacus."
+        : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads. (Why an abacus? Keep scrolling :D )`;
+
+  return (
+    <figure className={styles.soroban}>
+      <svg ref={svgRef} viewBox={`0 0 ${WIDTH} ${HEIGHT}`} aria-hidden="true" className={touched ? styles.settled : undefined}>
+        <rect x="2" y="2" width={WIDTH - 4} height={HEIGHT - 4} rx="6" className={styles.frame} />
+        <rect x="8" y={TOP} width={WIDTH - 16} height={BOTTOM - TOP} className={styles.well} />
+        {ROD_X.map((x) => (
+          <line key={x} x1={x} x2={x} y1={TOP} y2={BOTTOM} className={styles.rod} />
+        ))}
+        <rect x="8" y={BEAM_Y} width={WIDTH - 16} height={BEAM_H} className={styles.beam} />
+        {/* Unit-point marks on the beam, as on a real soroban */}
+        {[(ROD_X[1] + ROD_X[0]) / 2, (ROD_X[3] + ROD_X[2]) / 2].map((x) => (
+          <circle key={x} cx={x} cy={BEAM_Y + BEAM_H / 2} r="1.6" className={styles.dot} />
+        ))}
+
+        {ROD_X.map((x, rod) => {
+          const value = digits[rod];
+          const five = value >= 5;
+          const ones = value % 5;
+          return (
+            <g key={x} style={{ ["--rod" as string]: rod }}>
+              <path
+                d={beadPath(x, TOP)}
+                className={styles.bead}
+                style={{ transform: `translateY(${five ? HEAVEN_DROP : 0}px)` }}
+                {...beadHandlers(rod, "heaven")}
+              />
+              {[0, 1, 2, 3].map((i) => {
+                const active = i < ones;
+                return (
+                  <path
+                    key={i}
+                    d={beadPath(x, EARTH_Y + i * BEAD_H)}
+                    className={styles.bead}
+                    style={{ transform: `translateY(${active ? 0 : BEAD_H}px)` }}
+                    {...beadHandlers(rod, i)}
+                  />
+                );
+              })}
+            </g>
+          );
+        })}
+      </svg>
+      <figcaption aria-live="polite">
+        {caption}
+        {touched && (
+          <>
+            {" "}
+            <button type="button" className={styles.textButton} onClick={() => setTouched(false)}>
+              {value ? "Put them back" : "Show the time again"}
+            </button>
+          </>
+        )}
+      </figcaption>
+    </figure>
+  );
+}

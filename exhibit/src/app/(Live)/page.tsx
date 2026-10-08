@@ -1,17 +1,5 @@
-"use client";
-import Carousel from "@/components/Carousel";
-import { Hero } from "@/components/Hero";
-import Introduction from "@/components/Introduction";
-import Resume from "@/components/Resume";
-
-
+import Home from "@/components/home/Home";
 
 export default function Live() {
-  return (
-    <>
-      <Hero bg={"exhibit.200"}>
-        <Introduction />
-      </Hero>
-    </>
-  );
+  return <Home />;
 }

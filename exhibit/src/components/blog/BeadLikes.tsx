@@ -1,0 +1,86 @@
+import { useEffect, useRef, useState } from "react";
+import { usePostsStore } from "@/utils/postsStore";
+import { likesHandler } from "@/utils/methods";
+import home from "@/components/home/home.module.css";
+import styles from "./blog.module.css";
+
+// A rod tops out at 9 (the 5-bead plus all four 1-beads), so that's each reader's limit.
+const MAX_LIKES_PER_READER = 9;
+
+// One soroban rod, scaled down: a heaven bead worth 5 above the beam, four earth beads worth 1 below.
+const W = 44;
+const X = W / 2;
+const BEAD_W = 32;
+const BEAD_H = 14;
+const TOP = 5;
+const BEAM_Y = TOP + BEAD_H * 2;
+const BEAM_H = 5;
+const EARTH_Y = BEAM_Y + BEAM_H;
+const BOTTOM = EARTH_Y + BEAD_H * 5;
+const H = BOTTOM + 5;
+
+function bead(y: number) {
+  const l = X - BEAD_W / 2;
+  const r = X + BEAD_W / 2;
+  const m = y + BEAD_H / 2;
+  return `M${l} ${m} L${l + 7} ${y + 1} L${r - 7} ${y + 1} L${r} ${m} L${r - 7} ${y + BEAD_H - 1} L${l + 7} ${y + BEAD_H - 1} Z`;
+}
+
+// Likes for a post, counted on an abacus rod. Each reader can like a post up to 9 times.
+export default function BeadLikes({ likes = 0, userLikes = 0 }: { likes?: number; userLikes?: number }) {
+  const currentIP = usePostsStore((state) => state.currentIP);
+  const currentUUID = usePostsStore((state) => state.currentUUID);
+  const [total, setTotal] = useState(Number(likes));
+  const [mine, setMine] = useState(Number(userLikes));
+  const synced = useRef(false);
+
+  // The counts can arrive after the first render; adopt them once.
+  useEffect(() => {
+    if (synced.current) return;
+    setTotal(Number(likes));
+    setMine(Number(userLikes));
+    synced.current = true;
+  }, [likes, userLikes]);
+
+  const maxed = mine >= MAX_LIKES_PER_READER;
+
+  const like = () => {
+    if (maxed) return;
+    likesHandler(currentIP, currentUUID);
+    setMine(mine + 1);
+    setTotal(total + 1);
+  };
+
+  const five = mine >= 5;
+  const ones = mine % 5;
+  return (
+    <div className={styles.likeWidget}>
+      <button
+        type="button"
+        onClick={like}
+        aria-disabled={maxed}
+        aria-label={maxed ? `You’ve already liked this post ${MAX_LIKES_PER_READER} times` : "Like this post"}
+        className={styles.rodButton}
+        title={maxed ? undefined : "Like"}
+      >
+        <svg viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+          <rect x="1.5" y="1.5" width={W - 3} height={H - 3} rx="4" className={home.frame} />
+          <line x1={X} x2={X} y1={TOP} y2={BOTTOM} className={home.rod} />
+          <rect x="4" y={BEAM_Y} width={W - 8} height={BEAM_H} className={home.beam} />
+          <path d={bead(TOP)} className={styles.likeBead} style={{ transform: `translateY(${five ? BEAD_H : 0}px)` }} />
+          {[0, 1, 2, 3].map((i) => (
+            <path
+              key={i}
+              d={bead(EARTH_Y + i * BEAD_H)}
+              className={styles.likeBead}
+              style={{ transform: `translateY(${i < ones ? 0 : BEAD_H}px)` }}
+            />
+          ))}
+        </svg>
+      </button>
+      <span className={styles.likesTotal} aria-live="polite">
+        {total} {total === 1 ? "like" : "likes"}
+      </span>
+    </div>
+  );
+}
