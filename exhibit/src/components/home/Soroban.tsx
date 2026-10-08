@@ -51,6 +51,48 @@ function waterlooTime() {
   return get("hour") + get("minute");
 }
 
+// Om's age today, by the calendar in Waterloo. Born September 23, 2004.
+function ageInWaterloo() {
+  const [year, month, day] = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto" })
+    .format(new Date())
+    .split("-")
+    .map(Number);
+  return year - 2004 - (month < 9 || (month === 9 && day < 23) ? 1 : 0);
+}
+
+type EasterEgg = { label?: string; text: ReactNode };
+
+// Numbers the rods can land on, by a reader's hand or by the clock. Keyed by all four rods.
+const EASTER_EGGS: Record<string, EasterEgg> = {
+  "1729": { text: "the Hardy–Ramanujan number: the smallest sum of two cubes in two ways (1³ + 12³ = 9³ + 10³)." },
+  "3141": { text: "the first four digits of π." },
+  "2718": { text: "the first four digits of e." },
+  "1618": { text: "the golden ratio, give or take a decimal point." },
+  "2048": { text: "now merge the tiles." },
+  "0404": { text: "but the page was found, actually." },
+  "0042": { text: "the answer to life, the universe, and everything." },
+  "0451": { text: "Fahrenheit 451, and every video game’s door code." },
+  "2027": {
+    text: (
+      <>
+        as in Class of 2027. <a href="mailto:oogale@uwaterloo.ca">Hiring?</a>
+      </>
+    ),
+  },
+  "0021": { text: "as in the 21st UCMAS International Abacus Competition, where I took first place." },
+  "0923": { label: "September 23", text: "my birthday." },
+};
+
+function easterEgg(rods: string): ReactNode {
+  const egg = rods === String(ageInWaterloo()).padStart(4, "0") ? { text: "how old I am." } : EASTER_EGGS[rods];
+  if (!egg) return null;
+  return (
+    <>
+      {egg.label ?? Number(rods)}, {egg.text}
+    </>
+  );
+}
+
 function twelveHour(digits: string) {
   const h = Number(digits.slice(0, 2));
   const m = digits.slice(2);
@@ -138,13 +180,23 @@ export default function Soroban({ value, caption: fixedCaption }: { value?: stri
     onPointerCancel: () => (drag.current = null),
   });
 
-  const caption = touched
-    ? `The beads now read ${digits.join("")}.`
-    : value
-      ? fixedCaption
-      : !time
-        ? "Waterloo time, shown on an abacus."
-        : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads. (Why an abacus? Keep scrolling :D )`;
+  const rods = digits.join("");
+  const clockEgg = time && !value ? easterEgg(time) : null;
+  // A page that shows a fixed number keeps its own caption for it, even when the beads are moved back to it.
+  const caption =
+    touched && rods !== value
+      ? easterEgg(rods) || `The beads now read ${rods}.`
+      : value
+        ? fixedCaption
+        : !time
+          ? "Waterloo time, shown on an abacus."
+          : clockEgg
+            ? (
+                <>
+                  It’s {twelveHour(time)} in Waterloo, shown on an abacus. That’s also {clockEgg} Try moving the beads.
+                </>
+              )
+            : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads; some numbers have something to say. (Why an abacus? Keep scrolling :D )`;
 
   return (
     <figure className={styles.soroban}>
