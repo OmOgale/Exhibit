@@ -53,9 +53,9 @@ const work = [
 
 const community = [
   { org: "UW Blueprint", what: "Project lead on a Discord integration for BobaTalks (13K+ members); before that, built tools for Marillac Place and Extend-A-Family." },
+  { org: "Hack the North and Hack Canada", what: "Hackathon judge." },
   { org: "Google Developer Group", what: "Software executive, built auth for GDG's monorepo." },
   { org: "UW Computer Science Club", what: "Built the CS class profile, visualizing the graduating class’s journeys." },
-  { org: "Hack the North and Hack Canada", what: "Hackathon judge." },
 ];
 
 const links = [
