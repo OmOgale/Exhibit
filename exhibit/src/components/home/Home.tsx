@@ -93,7 +93,7 @@ export default function Home() {
             recently at GPTZero. Previously worked on fullstack and systems at Carta and Ford.
           </p>
           <p>
-            At GPTZero I led our investigations work, including the investigations into{" "}
+            At GPTZero I led our investigations initiative into LLM hallucinations, primarily the investigations into{" "}
             <a href="https://www.ft.com/content/a61cbcae-95e4-4449-86e1-ef40fb306f4e">EY</a>,{" "}
             <a href="https://www.ft.com/content/b3828e92-4961-4b39-84f0-c42f33be3c3f">KPMG</a>, and{" "}
             <a href="https://www.ft.com/content/7e149ac8-2ce2-4266-8940-192f9821b33c">PwC</a>. All three reached the front
