@@ -54,6 +54,7 @@ export default function BeadLikes({ uuid, likes = 0, userLikes }: { uuid: string
       if (res.ok) return;
       setTotal((t) => t - 1);
       // 409: this reader was already at the limit (say, from another tab), so show a full rod.
+      // Anything else, 429 (too many likes from this network) included, takes the bead back.
       setMine((m) => (res.status === 409 ? MAX_LIKES_PER_READER : m - 1));
     } catch {
       setMine((m) => m - 1);
