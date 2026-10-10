@@ -60,24 +60,25 @@ function ageInWaterloo() {
   return year - 2004 - (month < 9 || (month === 9 && day < 23) ? 1 : 0);
 }
 
-type EasterEgg = { label?: string; text: ReactNode };
+// A bare egg is a punchline that stands on its own, so its caption leaves the number out.
+type EasterEgg = { label?: string; text: ReactNode; bare?: boolean };
 
 // Numbers the rods can land on, by a reader's hand or by the clock. Keyed by all four rods.
 const EASTER_EGGS: Record<string, EasterEgg> = {
   "1729": { text: "the Hardy–Ramanujan number: the smallest sum of two cubes in two ways (1³ + 12³ = 9³ + 10³)." },
-  "3000": { text: "as in “I love you 3000.”" },
+  "3000": { text: "I love you 3000.", bare: true },
   "3141": { text: "the first four digits of π." },
   "2718": { text: "the first four digits of e." },
   "1618": { text: "the golden ratio, give or take a decimal point." },
   "2048": { text: "now merge the tiles." },
   "0404": { text: "but the page was found, actually." },
-  "0007": { text: "SIUUU!" },
+  "0007": { text: "SIUUU!", bare: true },
   "0042": { text: "the answer to life, the universe, and everything." },
-  "0047": { label: "Agent 47", text: "good luck." },
-  "0067": { text: "six seven. 🤷" },
-  "0069": { text: "nice." },
-  "0099": { label: "99 problems", text: "but a b ain’t one." },
-  "0360": { text: "no scope." },
+  "0047": { text: "Agent 47, good luck.", bare: true },
+  "0067": { text: "Six seven. 🤷", bare: true },
+  "0069": { text: "Nice.", bare: true },
+  "0099": { text: "99 problems, but a b ain’t one.", bare: true },
+  "0360": { text: "No scope.", bare: true },
   "0451": { text: "Fahrenheit 451, and every video game’s door code." },
   "2027": {
     text: (
@@ -88,15 +89,20 @@ const EASTER_EGGS: Record<string, EasterEgg> = {
   },
   "0021": { text: "as in the 21st UCMAS International Abacus Competition, where I took first place." },
   "0923": { label: "September 23", text: "my birthday." },
-  "8008": { text: "I’m a professional, I swear." },
+  "8008": { text: "I’m a professional, I swear.", bare: true },
   "1111": { text: "make a wish." },
-  "1984": { text: "Big Brother is watching." },
+  "1984": { text: "Big Brother is watching.", bare: true },
   "2004": { text: "the year I was born." },
 };
 
+function findEgg(rods: string): EasterEgg | undefined {
+  return rods === String(ageInWaterloo()).padStart(4, "0") ? { text: "how old I am." } : EASTER_EGGS[rods];
+}
+
 function easterEgg(rods: string): ReactNode {
-  const egg = rods === String(ageInWaterloo()).padStart(4, "0") ? { text: "how old I am." } : EASTER_EGGS[rods];
+  const egg = findEgg(rods);
   if (!egg) return null;
+  if (egg.bare) return egg.text;
   return (
     <>
       {egg.label ?? Number(rods)}, {egg.text}
@@ -204,7 +210,8 @@ export default function Soroban({ value, caption: fixedCaption }: { value?: stri
           : clockEgg
             ? (
                 <>
-                  It’s {twelveHour(time)} in Waterloo, shown on an abacus. That’s also {clockEgg} Try moving the beads.
+                  It’s {twelveHour(time)} in Waterloo, shown on an abacus. {findEgg(time)?.bare ? "" : "That’s also "}
+                  {clockEgg} Try moving the beads.
                 </>
               )
             : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads; some numbers have something to say. (Why an abacus? Keep scrolling :D )`;
