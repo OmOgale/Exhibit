@@ -88,6 +88,7 @@ const EASTER_EGGS: Record<string, EasterEgg> = {
   },
   "0021": { text: "as in the 21st UCMAS International Abacus Competition, where I took first place." },
   "0923": { label: "September 23", text: "my birthday." },
+  "8008": { text: "I’m a professional, I swear." },
   "1111": { text: "make a wish." },
   "1984": { text: "Big Brother is watching." },
   "2004": { text: "the year I was born." },
