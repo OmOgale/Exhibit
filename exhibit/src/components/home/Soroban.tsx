@@ -65,12 +65,19 @@ type EasterEgg = { label?: string; text: ReactNode };
 // Numbers the rods can land on, by a reader's hand or by the clock. Keyed by all four rods.
 const EASTER_EGGS: Record<string, EasterEgg> = {
   "1729": { text: "the Hardy–Ramanujan number: the smallest sum of two cubes in two ways (1³ + 12³ = 9³ + 10³)." },
+  "3000": { text: "as in “I love you 3000.”" },
   "3141": { text: "the first four digits of π." },
   "2718": { text: "the first four digits of e." },
   "1618": { text: "the golden ratio, give or take a decimal point." },
   "2048": { text: "now merge the tiles." },
   "0404": { text: "but the page was found, actually." },
+  "0007": { text: "SIUUU!" },
   "0042": { text: "the answer to life, the universe, and everything." },
+  "0047": { label: "Agent 47", text: "good luck." },
+  "0067": { text: "six seven. 🤷" },
+  "0069": { text: "nice." },
+  "0099": { label: "99 problems", text: "but a b ain’t one." },
+  "0360": { text: "no scope." },
   "0451": { text: "Fahrenheit 451, and every video game’s door code." },
   "2027": {
     text: (
@@ -82,6 +89,7 @@ const EASTER_EGGS: Record<string, EasterEgg> = {
   "0021": { text: "as in the 21st UCMAS International Abacus Competition, where I took first place." },
   "0923": { label: "September 23", text: "my birthday." },
   "1111": { text: "make a wish." },
+  "1984": { text: "Big Brother is watching." },
   "2004": { text: "the year I was born." },
 };
 
