@@ -63,7 +63,7 @@ function ageInWaterloo() {
 // A bare egg is a punchline that stands on its own, so its caption leaves the number out.
 type EasterEgg = { label?: string; text: ReactNode; bare?: boolean };
 
-// Numbers the rods can land on, by a reader's hand or by the clock. Keyed by all four rods.
+// Numbers a reader can move the rods to. The clock never shows these on its own. Keyed by all four rods.
 const EASTER_EGGS: Record<string, EasterEgg> = {
   "1729": { text: "the Hardy–Ramanujan number: the smallest sum of two cubes in two ways (1³ + 12³ = 9³ + 10³)." },
   "3000": { text: "I love you 3000.", bare: true },
@@ -95,12 +95,8 @@ const EASTER_EGGS: Record<string, EasterEgg> = {
   "2004": { text: "the year I was born." },
 };
 
-function findEgg(rods: string): EasterEgg | undefined {
-  return rods === String(ageInWaterloo()).padStart(4, "0") ? { text: "how old I am." } : EASTER_EGGS[rods];
-}
-
 function easterEgg(rods: string): ReactNode {
-  const egg = findEgg(rods);
+  const egg = rods === String(ageInWaterloo()).padStart(4, "0") ? { text: "how old I am." } : EASTER_EGGS[rods];
   if (!egg) return null;
   if (egg.bare) return egg.text;
   return (
@@ -198,7 +194,6 @@ export default function Soroban({ value, caption: fixedCaption }: { value?: stri
   });
 
   const rods = digits.join("");
-  const clockEgg = time && !value ? easterEgg(time) : null;
   // A page that shows a fixed number keeps its own caption for it, even when the beads are moved back to it.
   const caption =
     touched && rods !== value
@@ -207,14 +202,7 @@ export default function Soroban({ value, caption: fixedCaption }: { value?: stri
         ? fixedCaption
         : !time
           ? "Waterloo time, shown on an abacus."
-          : clockEgg
-            ? (
-                <>
-                  It’s {twelveHour(time)} in Waterloo, shown on an abacus. {findEgg(time)?.bare ? "" : "That’s also "}
-                  {clockEgg} Try moving the beads.
-                </>
-              )
-            : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads; some numbers have something to say. (Why an abacus? Keep scrolling :D )`;
+          : `It’s ${twelveHour(time)} in Waterloo, shown on an abacus. Try moving the beads; some numbers have something to say. (Why an abacus? Keep scrolling :D )`;
 
   return (
     <figure className={styles.soroban}>
