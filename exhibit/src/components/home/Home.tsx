@@ -96,11 +96,13 @@ export default function Home() {
             recently at GPTZero. Previously worked on fullstack and systems at Carta and Ford.
           </p>
           <p>
-            At GPTZero I led our investigative research into LLM hallucinations, primarily into{" "}
+            At GPTZero I led our investigative research into LLM hallucinations in reports from{" "}
             <a href="https://www.ft.com/content/a61cbcae-95e4-4449-86e1-ef40fb306f4e">EY</a>,{" "}
             <a href="https://www.ft.com/content/b3828e92-4961-4b39-84f0-c42f33be3c3f">KPMG</a>, and{" "}
-            <a href="https://www.ft.com/content/7e149ac8-2ce2-4266-8940-192f9821b33c">PwC</a>. All three reached the front
-            page of the Financial Times, and the work was highlighted in Grammarly’s acquisition of GPTZero. Also featured by{" "}
+            <a href="https://www.ft.com/content/7e149ac8-2ce2-4266-8940-192f9821b33c">PwC</a>. I built the
+            infrastructure to search, process, and analyze documents at scale. All three investigations reached the
+            front page of the Financial Times, and the work was highlighted in Grammarly’s acquisition of GPTZero. It
+            was also covered by{" "}
             <a href="https://news.bloombergtax.com/financial-accounting/pwc-middle-east-reports-slammed-for-irresponsible-ai-use">Bloomberg</a>,{" "}
             <a href="https://www.forbes.com/sites/rachelwells/2026/07/31/pwc-reports-caught-with-ai-slop-is-a-warning-to-every-worker-right-now/">Forbes</a>,{" "}
             <a href="https://www.telegraph.co.uk/business/2026/08/03/consultants-face-backlash-over-ai-plans/">the Telegraph</a>, and more.
